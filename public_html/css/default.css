@@ -1,0 +1,130 @@
+/*
+ * Gracias
+ * http://www.catswhocode.com/blog/create-an-adaptable-website-layout-with-css3-media-queries
+*/
+
+*{
+	margin:0;
+	padding:0;
+}
+
+html{
+	font-size:62.5%;
+}
+
+body{
+	font-family:"Lucida Grande", Arial;
+	font-size:14px;		/* fallback for browsers without rem units support */
+	font-size:1.4rem;	/* =14px */
+	background:#222 url(../img/metalTexture.png) repeat fixed;
+}
+
+p{
+	margin:15px 0;
+	margin:1.5rem 0;
+	text-align:justify;
+}
+
+h1, h2, h3, h4, h5, h6{
+	margin-top:20px;
+	margin-top:2.0rem;
+}
+
+#container{
+	margin:0 auto;
+	width:800px;
+	border:1px solid #ddd;
+	border-top:none;
+	background:#eee;
+}
+
+header{
+	height:100px;
+	height:10.0rem;
+	border-top:1px solid #444;
+	background:#222 url(../img/metalTextureDarker.png);
+}
+
+#main_menu{
+	margin-bottom:70px;
+}
+
+
+
+
+#content{
+	width:95%;
+	margin:0 auto;
+}
+
+#content img{
+	max-width:100%;
+}
+
+#content table{
+	border-collapse:collapse;
+	border-spacing:0;
+	border:1px solid #555;
+	color:#222;
+	background:#fff;
+}
+
+#content table th{
+	padding:2px;
+	font-weight:bold;
+	text-align:center;
+	color:#fff;
+	background:#000;
+}
+
+#content table td{
+	padding:2px;
+	margin:0;
+	border:1px solid #777;
+}
+
+
+#content input, #content label{
+	margin:3px 0;
+	display:block;
+}
+
+#content input[type="radio"], #content input[type="checkbox"]
+{
+	display: inline;
+}
+
+#content input[type="submit"]{
+	margin:6px 0;
+	padding:3px 6px;
+}
+
+#content label{
+	margin-top:10px;
+}
+
+#content form .helper{
+	font-size:90%;
+	font-style:italic;
+}
+
+
+
+footer{
+	margin-top:10px;
+	text-align:center;
+	font-size:11px;
+	font-size:1.1rem;
+}
+
+@media screen and (min-width:1200px){
+	#container{
+		width:1100px;
+	}
+}
+
+@media screen and (max-width:767px){
+	#container{
+		width:320px;
+	} 
+}
