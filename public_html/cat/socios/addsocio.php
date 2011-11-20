@@ -1,5 +1,5 @@
 <!--AgregarSocio-->
-<html>
+
 
 <script>
 
@@ -30,11 +30,18 @@ function validar(){
       	 return 0;	}
 	//valido email distinto de vacío
 	
-	if (document.input.email.value.length==0){ 
-      	 alert("Tiene que escribir un email");
-      	 document.input.email.focus(); 
-      	 return 0; 
-   	} 
+	
+var x=document.input.email.value;
+var atpos=x.indexOf("@");
+var dotpos=x.lastIndexOf(".");
+if (atpos<1 || dotpos<atpos+2 || dotpos+2>=x.length)
+  {
+  alert("No es e-mail válido");
+  document.input.email.focus(); 
+  return 0;
+  
+  }
+   	 
 	//valido el nombre y apellidos
    	if (document.input.nombre.value.length==0){ 
       	 alert("Tiene que escribir su nombre") 
@@ -76,29 +83,36 @@ function validar(){
       	 document.input.direccion.focus() 
       	 return 0; 
    	} 
-	
-	if (document.input.dia.value.length==0 || document.input.dia.value > 31){ 
-      	 alert("Tiene que escribir dia de nacimiento valido") 
-      	 document.input.dia.focus() 
-      	 return 0; 
-   	}
-	
-	if (document.input.mes.value.length==0 || document.input.mes.value > 12){ 
-      	 alert("Tiene que escribir mes de nacimiento valido") 
-      	 document.input.mes.focus() 
-      	 return 0; 
-   	}
-	
-	if (document.input.anio.value.length==0 || document.input.anio.value < 1800){ 
-      	 alert("Tiene que escribir año de nacimiento valido") 
-      	 document.input.anio.focus() 
-      	 return 0; 
-   	}
 
    	//el formulario se envia 
  
 	document.input.submit(); 
 }
+
+
+
+$(function() {
+
+var $now = new Date();
+$.datepicker.setDefaults( $.datepicker.regional[ "" ] );
+
+		$( "#fecha_nacimiento" ).datepicker
+		($.extend(
+			{
+				changeMonth: true,
+				changeYear: true,
+				dateFormat: 'yy-mm-dd',
+				maxDate: $now
+			
+			
+			}
+		,$.datepicker.regional[ "es" ] )
+		);
+		
+	});
+	
+	
+
 </script>
 
 <h1> Agregar un nuevo Socio</h1>
@@ -150,8 +164,7 @@ function validar(){
 	<tr>
     <td>Fecha de Nacimiento: </td>
 	<td>
-	<input type="text" name="dia" size="2" maxlength="2" value="DD">/<input type="text" name="mes" size="2" maxlength="2" value="MM">/
-	<input type="text" name="anio" size="4" maxlength="4" value="AAAA">
+	<input type="text" name="fecha_nacimiento" id="fecha_nacimiento" />
 	</td>
 	</tr>
 	<tr>
@@ -164,4 +177,3 @@ function validar(){
 </table></br>
 <input type="button" value="Agregar" onclick="validar()"/> <input type="reset" />
 </form>
-</html>
