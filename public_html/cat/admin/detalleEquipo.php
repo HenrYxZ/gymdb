@@ -8,20 +8,22 @@ if(isset($_GET['id']))
 	
 	require('cat/_connect.php');
 	$querystr="SELECT * FROM equipamiento WHERE id='$id'";
+	
 	$stmt=$dbh->query($querystr);
 	$info=$stmt->fetch(PDO::FETCH_ASSOC);
 	?>
+	<h2>Detalle Equipamiento</h2>
 	<table>
 	<tr><th>ID</th><td><?php echo $info['id'];?></td></tr>
 	<tr><th>Tipo</th><td><?php echo $info['tipo']; ?></td></tr>
-	<tr><th>Periodicidad Mantenimiento</th><td><?php echo $info['periodicidad_mantemiento']; ?></td></tr>
+	<tr><th>Periodicidad Mantenimiento</th><td><?php echo $info['periodicidad_mantenimiento']; ?></td></tr>
 	<tr><th>Fecha Compra</th><td><?php echo $info['fecha_compra']; ?></td></tr>
-	
+	</table>
 	
 	<?php
 	}
-	echo '</table>';
-	}
+	
+	
 	catch(PDOException $e){
 	Debugger::notice($e->getMessage());
 }

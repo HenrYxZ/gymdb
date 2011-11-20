@@ -8,7 +8,7 @@ foreach($dbh->query($q1) as $row){
 	
 	?>
 	<tr>
-		<td><?php echo $row['id']?></td>
+		<td><a href='index.php?cat=admin&action=detalleEquipo&id=<?php echo $row['id']?>'><?php echo $row['id']?></a></td>
 		<td><?php echo $row['tipo']?></td>
 		<td><?php echo $row['tiempo_total_de_uso']?></td>
 	</tr>

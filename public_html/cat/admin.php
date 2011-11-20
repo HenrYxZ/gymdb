@@ -26,5 +26,8 @@ elseif($action=='detalleEquipo')
 {
 require_once('admin/insertEquipo.php');
 }
-
+elseif($action=='eliminarEquipo')
+{
+require_once('admin/eliminarEquipo.php');
+}
 ?>
