@@ -32,21 +32,31 @@ if(isset($_POST['tipo_entrenador']))
 	$tipo = $_POST['tipo_entrenador'];
 Debugger::notice($rut);	
 
-$stmt=$dbh->prepare("SELECT 1 FROM entrenador WHERE rut_entrenador='$rut'");
-$stmt->execute();
+
+$querystr="SELECT 1 FROM entrenador WHERE rut_entrenador='$rut'";
+	
+$stmt=$dbh->query($querystr);
 $contador=$stmt->RowCount();
-print("SELECT 1 FROM entrenador WHERE rut_entrenador='$rut'\n\n\n$contador->rowCount()");
-if($contador->rowCount()>0) {print "\n\n repetido";}
-if($contador->rowCount()>0){
-//header('Location: ../../index.php?cat=trainers&action=addTrainers&error=RutRepetido');
+if($contador>0){
+
+?>
+<script language="javascript" type="text/javascript">
+     <!--
+     window.setTimeout('window.location="../../index.php?cat=trainers&action=addTrainers"; ',2100);
+     // -->
+</script>
+<h2>ERROR: Ya existe un trainer con ese RUT<h2>
+<?php
 }
+else{
 $q = "INSERT INTO entrenador VALUES ('$rut', '$email','$nombre','$ap_paterno', '$ap_materno', '$sexo', '$tipo')";
 Debugger::notice($q);
 $count = $dbh->exec($q);
 Debugger::notice($count);
 echo($count);
 $dbh=null;
-//header('Location: ../../index.php?cat=trainers&action=showTrainers');
+header('Location: ../../index.php?cat=trainers&action=showTrainers');
+}
 }
 catch(PDOException $e){
 	print($e->getMessage());

@@ -67,12 +67,7 @@ if(isset($_GET["cat"]) && strlen($_GET["cat"]) > 0)
 							<li><a href="index.php?cat=trainers&action=showTrainers">Ver todos los trainers</a></li>
 							<li><a href="index.php?cat=trainers&action=addTrainers">Registrar nuevo trainer</a></li>
 							<li><a href="index.php?cat=trainers&action=showAgenda">Ver agenda para un trainer</a></li>
-							
-							<li><a href="index.php?cat=admin&action=verEquipamiento">Ver equipamiento actual y estad&iacute;sticas de uso</a></li>
-							
-							<li><a href="#">Agregar equipamiento</a></li>
-							
-							
+							<li><a href="index.php?cat=admin&action=verEquipamiento">Administrar equipamiento</a></li>
 							<li><a href="index.php?cat=socios&action=listsocios">Ver todos los socios</a></li>
 							<li><a href="index.php?cat=socios&action=addsocio">Registrar nuevo socio</a></li>
 							<li><a href="index.php?cat=admin&action=asistencia">Estad&iacute;sticas de socios</a></li>

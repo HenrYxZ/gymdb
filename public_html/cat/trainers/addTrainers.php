@@ -18,7 +18,9 @@ if (atpos<1 || dotpos<atpos+2 || dotpos+2>=valor.length){
   return false;
   }
   return true;}
-
+function elmt(id){
+return document.getElementByID(id);
+}
 
 function validar(){ 
    	//valido largo del rut de acuerdo a la base de datos varchar(11), además valida si el strig tiene guion
@@ -38,6 +40,7 @@ function validar(){
 	alert("Ingrese un rut válido");
 	document.formtrainer.rut_entrenador.focus(); 
       	 return 0;	}
+
 	//valido email distinto de vacío
 	
 	if (document.formtrainer.email.value.length==0){ 
@@ -52,22 +55,26 @@ function validar(){
 	document.formtrainer.email.focus()
 	return 0;
 	}
+
 	//valido el nombre y apellidos
    	if (document.formtrainer.nombre.value.length==0){ 
       	 alert("Tiene que escribir su nombre") 
       	 document.formtrainer.nombre.focus() 
       	 return 0; 
    	} 
+
 	if (document.formtrainer.ap_paterno.value.length==0){ 
       	 alert("Tiene que escribir su apellido paterno") 
       	 document.formtrainer.ap_paterno.focus() 
       	 return 0; 
-   	} 
+   	}
+
 	if (document.formtrainer.ap_materno.value.length==0){ 
       	 alert("Tiene que escribir su apellido materno") 
       	 document.formtrainer.ap_materno.focus() 
       	 return 0; 
    	} 
+
 	//validacion sexo
 	var sexoElegido;
 	var cnt=-1;
@@ -81,6 +88,7 @@ function validar(){
       	 document.formtrainer.sexo.focus() 
       	 return 0; 
 	}
+
 	
 	if (document.formtrainer.tipo_entrenador.value.length==0){ 
       	 alert("Tiene que escribir descripción de tipo de entrenador") 
@@ -89,19 +97,18 @@ function validar(){
    	} 
 
    	//el formulario se envia 
- 
 	document.formtrainer.submit(); 
 }
 </script>
 
 <div>
 <br>
-<form name=formtrainer method="post" action="cat/trainers/insertTrainers.php">
+<form id="ftrainer" name="formtrainer" method="post" action="cat/trainers/insertTrainers.php">
 	 	 	 <p>RUT:<input type="text" name="rut_entrenador" required="required"></p>
 			 <p>e-mail: <input type="email" name="email" required="required"></p>
 			 <p>Nombre:<input type="text" name="nombre" required="required"></p>
 			 <p>Apellido Paterno:<input type="text" name="ap_paterno" required="required"></p>
-			 <p>Apelllido Materno:<input type="text" name="ap_materno required="required""></p>
+			 <p>Apelllido Materno:<input type="text" name="ap_materno" required="required"></p>
 			 
 			<p>Sexo:
 			<input type="radio" name="sexo" value="Mujer" required="required">Femenino

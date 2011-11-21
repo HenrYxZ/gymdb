@@ -1,3 +1,21 @@
+<script>
+function validar()
+{
+if (document.getElementById("fecha_compra").value.length==0){ 
+      	 alert("Tiene ingresar fecha de compra") 
+      	 document.getElementById("fecha_compra").focus() 
+      	 return 0; 
+   	} 	
+if (document.getElementById("tipo_equipo").value.length==0){ 
+      	 alert("Tiene ingresar tipo de equipo") 
+      	 document.getElementById("tipo_equipo").focus() 
+      	 return 0; 
+   	} 	
+	
+document.getElementById("formequip").submit(); 	
+}
+</script>
+
 <?php
 $q1="select id, tipo, suma as tiempo_total_de_uso from
 (select id, coalesce(sum(tiempo_de_uso),'0 days') as suma from socio_usa_equipo right outer join equipamiento on equipamiento.id=socio_usa_equipo.id_equipamiento group by equipamiento.id) as t natural join equipamiento";
@@ -18,7 +36,7 @@ foreach($dbh->query($q1) as $row){
 	?>
 	</table>
 	<h2>Agregar Equipamiento</h2>
-	<form action="index.php" method="get">
+	<form id="formequip" action="index.php" method="get">
 			<label for="cantidad">
 				Cantidad
 			</label>
@@ -50,21 +68,15 @@ foreach($dbh->query($q1) as $row){
 			<input type="hidden" name="action" value="addEquipo" />
 			
 			<!-- Enviar -->
-			<input type="submit" value="Agregar" />
+			<input type="button" value="Agregar" onclick="validar()" />
 		</form>
-		<script type="text/javascript">
-	var $now = new Date();
-	
+<script type="text/javascript">
 
 	
-	$('#fecha_compra').datetimepicker({
-	});
-	
-	
-	function isValidDateObject(objToTest) {
-		if (objToTest instanceof Date) return true;
-		return false;
-	}
+
+	$(function() {
+	$('#fecha_compra').datetimepicker({	});
+});
 </script>
 	<?php
 	
