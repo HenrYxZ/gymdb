@@ -28,6 +28,7 @@ require_once('admin/insertEquipo.php');
 }
 elseif($action=='eliminarEquipo')
 {
+Debugger::notice('Eliminar@admin');
 require_once('admin/eliminarEquipo.php');
 }
 ?>

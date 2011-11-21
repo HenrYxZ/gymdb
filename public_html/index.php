@@ -71,7 +71,7 @@ if(isset($_GET["cat"]) && strlen($_GET["cat"]) > 0)
 							<li><a href="index.php?cat=admin&action=verEquipamiento">Ver equipamiento actual y estad&iacute;sticas de uso</a></li>
 							
 							<li><a href="#">Agregar equipamiento</a></li>
-							<li><a href="#">Eliminar equipamiento</a></li>
+							
 							
 							<li><a href="index.php?cat=socios&action=listsocios">Ver todos los socios</a></li>
 							<li><a href="index.php?cat=socios&action=addsocio">Registrar nuevo socio</a></li>

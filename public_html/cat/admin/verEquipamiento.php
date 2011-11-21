@@ -14,7 +14,8 @@ foreach($dbh->query($q1) as $row){
 	</tr>
 	<?php
 	}
-echo '</table>';
+	echo '</table>';
+
 }
 
 catch(PDOException $e){

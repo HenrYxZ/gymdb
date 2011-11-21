@@ -20,6 +20,11 @@ if(isset($_GET['id']))
 	<tr><th>Fecha Compra</th><td><?php echo $info['fecha_compra']; ?></td></tr>
 	</table>
 	
+<br>
+	<FORM>
+<INPUT TYPE="button" VALUE="Eliminar" ONCLICK="window.location.href='index.php?cat=admin&action=eliminarEquipo&id=<?php echo $id?>'"> 
+</FORM>
+
 	<?php
 	}
 	
