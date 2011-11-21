@@ -5,24 +5,29 @@
 </script>
 
 <?php
-$id = '-1';
-if(isset($_GET['id']))
+
+if(isset($_GET['cantidad'])&&isset($_GET['fecha_compra'])&&isset($_GET['tipo_equipo']))
 {
-	$id = $_GET['id'];
+	$cantidad = $_GET['cantidad'];
+	$fecha = $_GET['fecha_compra'];
+	$tipo = $_GET['tipo_equipo'];
+	$period = $_GET['period'];
 	try{
 	// Intentar crear una variable dbh que contiene el objeto PDO inicializado
 
 	require('cat/_connect.php');
-	$deletestr="DELETE FROM equipamiento WHERE id='$id'";
-	$count = $dbh->exec($deletestr);
+	$insertstr="INSERT INTO equipamiento VALUES (nextval('equipamiento_id_seq'), '$tipo', '$period days', '$fecha')";
+	for ($i = 1; $i <= $cantidad; $i++) {
+    $count = $dbh->exec($insertstr);
+}
 	if($count>0){
 	?>
-	<h2>El equipo id=<?php echo $id?> fue eliminado satisfactoriamente<h2>
+	<h2>Se han agregado <?php echo $cantidad?> nuevos equipos<h2>
 	<?php
 	}
 	else{
 	?>
-	<h2>El equipo id=<?php echo $id?>  no identificado, no se ha efectuado ninguna eliminacion.<h2>
+	<h2>Error, no se han agregado nuevos equipos.<h2>
 	<br>
 	
 	
