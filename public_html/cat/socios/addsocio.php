@@ -84,7 +84,7 @@ if (atpos<1 || dotpos<atpos+2 || dotpos+2>=x.length)
       	 return 0; 
    	}
 	
-	if (document.input.fecha_nacimiento.value.length==0){ 
+	if (document.input.fecha_nacimiento.value==null){ 
       	 alert("Tiene que escribir fecha de nacimiento") 
       	 document.input.fecha_nacimiento.focus() 
       	 return 0; 
@@ -221,9 +221,9 @@ $.datepicker.setDefaults( $.datepicker.regional[ "" ] );
 	<td>Tipo de pago:</td>
 	<td>
 	<select name="tipopago">
-	<option value="tarjetacredito" selected="selected"> Tarjeta de Credito</option>
-	<option value="cheque"> Cheque</option>
-	<option value="efectivo"> Efectivo</option>
+	<option value="Tarjeta Credito" selected="selected"> Tarjeta de Credito</option>
+	<option value="Cheque"> Cheque</option>
+	<option value="Efectivo"> Efectivo</option>
 	</select>
 	</td>
 	</td>
