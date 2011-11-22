@@ -25,8 +25,8 @@
 
 <?php 
 	//Para cada socio
-	$sql="SELECT * from socio";
-	foreach($dbh->query($sql) as $socio)
+	
+	foreach($dbh->query($q) as $socio)
 	{
 		//Creamos una fila de la tabla
 ?>
@@ -50,6 +50,27 @@
 	}
 ?>
 </table>
+
+<form method="get" action="index.php">
+			 <input type="hidden" name="cat" id="cat" value="<?php echo $cat; ?>" />
+			 <input type="hidden" name="action" id="action" value="<?php echo $action; ?>" />
+	 	 	 <p>RUT:<input type="text" name="rut_socio"></p>
+			 <p>e-mail: <input type="text" name="email"></p>
+			 <p>Nombre:<input type="text" name="nombre"></p>
+			 <p>Apellido Paterno:<input type="text" name="apellido_paterno"></p>
+			 <p>Apelllido Materno:<input type="text" name="apellido_materno"></p>
+			 
+			<p>Sexo:
+			<input type="radio" name="sexo" value="mujer">Femenino
+			<input type="radio" name="sexo" value="hombre">Masculino</p>
+			<p>Comuna: <input type="text" name="comuna"></p>
+			<p>direccion: <input type="text" name="direccion"></p>
+			<p>Fecha de Registro: <input type="text" name="fecha_registro"></p>
+			<p>Fecha de Nacimiento: <input type="text" name="fecha_nacimiento"></p>
+			<p>Telefono 1: <input type="text" name="telefono1"></p>
+			<p>Telefono 2: <input type="text" name="telefono2"></p>
+			<input type="submit" name="Submit" value="Filtrar">
+</form>
 
 <!-- Vinculo para crear un nuevo socio -->
 <p><a href='index.php?cat=socios&action=addsocio'>Agregar nuevo socio</a></p>
