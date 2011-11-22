@@ -25,6 +25,11 @@ try{
 	
 	elseif($action == 'listsocios'){
 		
+		if(isset($_GET['rut_socio'])&&""!==$_GET['rut_socio'])
+		{
+			$filtros[]= array('rut_socio',$_GET['rut_socio']);
+			
+		}
 		if(isset($_GET['nombre'])&&""!==$_GET['nombre'])
 		{
 			$filtros[]= array('nombre',$_GET['nombre']);
@@ -111,11 +116,6 @@ try{
 	Debugger::notice('Se ha seleccionado addsocio');
 	require('socios/addsocio.php');
 	//require('trainers/addTrainers.php')
-	}
-	elseif($action == 'infosocio')
-	{
-	Debugger::notice('Se ha seleccionado infosocio');
-	require('socios/infosocio.php');
 	}
 	else{
 		Debugger::notice('Acci&oacute;n "' . $action . '" no reconocida.');

@@ -32,7 +32,7 @@
 ?>
 	
 	<tr>
-		<td><a href='index.php?cat=socios&action=infosocio&rutsocio=<?php echo $socio['rut_socio']?>'><?php echo $socio['rut_socio']?></a></td>
+		<td><?php echo $socio['rut_socio']?></td>
 		<td><?php echo $socio['email']?></td>
 		<td><?php echo $socio['nombre']?></td>
 		<td><?php echo $socio['apellido_paterno']?></td>
@@ -54,7 +54,7 @@
 <form method="get" action="index.php">
 			 <input type="hidden" name="cat" id="cat" value="<?php echo $cat; ?>" />
 			 <input type="hidden" name="action" id="action" value="<?php echo $action; ?>" />
-	 	 	 <p>RUT:<input type="text" name="rut_entrenador"></p>
+	 	 	 <p>RUT:<input type="text" name="rut_socio"></p>
 			 <p>e-mail: <input type="text" name="email"></p>
 			 <p>Nombre:<input type="text" name="nombre"></p>
 			 <p>Apellido Paterno:<input type="text" name="apellido_paterno"></p>
