@@ -82,13 +82,48 @@ if (atpos<1 || dotpos<atpos+2 || dotpos+2>=x.length)
       	 alert("Tiene que escribir direccion") 
       	 document.input.direccion.focus() 
       	 return 0; 
-   	} 
+   	}
+	
+	if (document.input.fecha_nacimiento.value.length==0){ 
+      	 alert("Tiene que escribir fecha de nacimiento") 
+      	 document.input.fecha_nacimiento.focus() 
+      	 return 0; 
+   	}
+	
+	if(!validarEntero(document.input.telefono1.value) && document.input.telefono1.value.length!=0)
+	{
+		alert("Telefono 1 debe ser un numero entero")
+		document.input.telefono1.focus()
+		return 0;
+	}
+	
+	if(!validarEntero(document.input.telefono2.value) && document.input.telefono2.value.length!=0)
+	{
+		alert("Telefono 2 debe ser un numero entero")
+		document.input.telefono2.focus()
+		return 0;
+	}
+	
+	
 
    	//el formulario se envia 
  
 	document.input.submit(); 
 }
+function validarEntero(valor){
+      //intento convertir a entero.
+     //si era un entero no le afecta, si no lo era lo intenta convertir
+     valor = parseInt(valor)
 
+      //Compruebo si es un valor numérico
+      if (isNaN(valor)) {
+            //entonces (no es numero) devuelvo el valor cadena vacia
+            return ""
+      }else{
+            //En caso contrario (Si era un número) devuelvo el valor
+            return valor
+      }
+} 
 
 
 $(function() {
@@ -173,6 +208,25 @@ $.datepicker.setDefaults( $.datepicker.regional[ "" ] );
 	
     <td>Telefono 2: </td>
 	<td><input type="text" name="telefono2" /> <br/></td>
+	</tr>
+	<tr>
+	<td>Plan de matricula:</td>
+	<td>
+	<select name="tipomatricula">
+	<option value="3 meses" selected="selected"> 3 Meses</option>
+	<option value="6 meses"> 6 Meses</option>
+	<option value="12 meses"> 12 Meses</option>
+	</select>
+	</td>
+	<td>Tipo de pago:</td>
+	<td>
+	<select name="tipopago">
+	<option value="tarjetacredito" selected="selected"> Tarjeta de Credito</option>
+	<option value="cheque"> Cheque</option>
+	<option value="efectivo"> Efectivo</option>
+	</select>
+	</td>
+	</td>
 	</tr>
 </table></br>
 <input type="button" value="Agregar" onclick="validar()"/> <input type="reset" />
