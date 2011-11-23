@@ -75,7 +75,7 @@ function validarEntero(valor){
         <tr>
            <td>Rut: </td>
             <td>
-            <input type="text" name="rut_socio" value="ej:1234567-8"/> <br />
+            <input type="text" name="rut" value="ej:1234567-8"/> <br />
             </td>
         </tr>
         <tr>

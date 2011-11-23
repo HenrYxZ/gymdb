@@ -18,13 +18,10 @@ $telefono2=$_POST['telefono2'];
 
 
 $tabla="socio";
-$qrut="SELECT 1 from $tabla where rut_$tabla = $rut";
+$qrut="SELECT * from $tabla where rut_$tabla = '$rut'";
 Debugger::notice($qrut);
-$stmt=$dbh->query($querystr);
-$contador=$stmt->RowCount();
-Debugger::notice($contador);
 
-if($contador > 0)
+if($dbh->query($qrut))
 	$repetido=true;
 else
 	$repetido=false;
@@ -53,11 +50,11 @@ if($tipomatricula == '6 meses')
 		$meses='6 months';
 	}
 //Luego se debe cambiar null por rut de recepcionista
-if(!$repetido)
+if(!$repetido){
 $sql= "INSERT INTO matriculas VALUES ('$rut',localtimestamp(0),NULL,localtimestamp(0)+'$meses','$tipopago',$monto)";	
 Debugger::notice($sql);
 $dbh->exec($sql);
-
+}
 $dbh=null;
 
 if($repetido)
