@@ -114,8 +114,14 @@ try{
 	elseif($action == 'addsocio'){
 	Debugger::notice('Se ha seleccionado addsocio');
 	require('socios/addsocio.php');
-	//require('trainers/addTrainers.php')
+	
 	}
+	elseif($action == 'addprograma')
+	{
+	Debugger::notice('Se ha seleccionado addprograma');
+	require('socios/addprograma.php');
+	}
+	
 	elseif($action == 'infosocio')
 	{
 	Debugger::notice('Se ha seleccionado infosocio');

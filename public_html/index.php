@@ -83,6 +83,7 @@ if(isset($_GET["cat"]) && strlen($_GET["cat"]) > 0)
 							<li><a href="index.php?cat=trainers&action=showAgenda">Ver agenda</a></li>
 							<li><a href="index.php?cat=horario&action=newHorario">Agregar horario disponible</a></li>
 							<li><a href="index.php?cat=horario&action=newHorario">Actualizar programa de un socio</a></li>
+							<li><a href="index.php?cat=socio&action=addprograma">Agregar programa de ejercicios para un socio</a></li>
 						</ul>  
 					</li>  
 				</ul>
