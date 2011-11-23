@@ -32,7 +32,7 @@
 ?>
 	
 	<tr>
-		<td><?php echo $socio['rut_socio']?></td>
+		<td><a href='index.php?cat=socios&action=infosocio&rutsocio=<?php echo $socio['rut_socio']?>'><?php echo $socio['rut_socio']?></a></td>
 		<td><?php echo $socio['email']?></td>
 		<td><?php echo $socio['nombre']?></td>
 		<td><?php echo $socio['apellido_paterno']?></td>
