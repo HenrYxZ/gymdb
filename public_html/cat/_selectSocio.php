@@ -9,9 +9,9 @@
 				FROM Socio
 				ORDER BY apellido_paterno ASC';
 		?>
-		<h2>Escoger un socio</h2>
 		<!-- Atributo action de tag form es el index.php en el directorio raíz de ~grupo19. -->
-		<form action="index.php" method="get">
+		<form action="index.php" method="get" class="selectUser">
+			<h2>Escoger un socio</h2>
 		
 			<input type="hidden" name="cat" id="cat" value="<?php echo $cat; ?>" />
 			<input type="hidden" name="action" id="action" value="<?php echo $action; ?>" />

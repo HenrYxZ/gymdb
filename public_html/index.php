@@ -50,6 +50,7 @@ if(isset($_GET["cat"]) && strlen($_GET["cat"]) > 0)
 				<ul class="topnav">  
 					<li><a href="index.php">Inicio</a></li>
 					<li><a href="#">Reg&iacute;strese en el gimnasio</a></li>
+					<li><a href="index.php?cat=login">Login</a></li>
 					<li>
 						<a href="#">Socio</a>  
 						<ul class="subnav">
