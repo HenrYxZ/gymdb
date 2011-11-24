@@ -1,9 +1,5 @@
 <?php
 
-require('../../class/Debugger.php');
-try{
-require('../_connect.php');
-
 $fechanacimiento =$_POST['fecha_nacimiento'];
 $rut=$_POST['rut'];
 $email=$_POST['email'];
@@ -18,14 +14,18 @@ $telefono2=$_POST['telefono2'];
 
 
 $tabla="socio";
-$qrut="SELECT * from $tabla where rut_$tabla = '$rut'";
-Debugger::notice($qrut);
+	$qrut="SELECT * from $tabla where rut_$tabla = '$rut'";
+	Debugger::notice($qrut);
+	
+	$stmt=$dbh->query($qrut);
+$contador=$stmt->RowCount();
+Debugger::notice($contador);
 
-if($dbh->query($qrut))
+if($contador>0)
 	$repetido=true;
 else
 	$repetido=false;
-Debugger::notice($repetido);
+	
 $sql=
 "INSERT INTO socio VALUES ('$rut', '$email', '$nombre', '$apellido_paterno', '$apellido_materno', '$sexo',
 '$comuna', '$direccion', localtimestamp(0), '$fechanacimiento', '$telefono1', '$telefono2')";
@@ -61,10 +61,7 @@ if($repetido)
 echo "No se ha ingresado el nuevo socio, porque ese rut ya existe";
 else
 echo "Se ha ingresado un nuevo socio de nombre $nombre su matricula dura por $tipomatricula";
-}
-catch(PDOException $e){
-	Debugger::notice($e->getMessage());
-}
+
 ?>	
 
 <p><a href="../../index.php?cat=socios&action=addsocio"> Volver a agregar otro socio</a></p>

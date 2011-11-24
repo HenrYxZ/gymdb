@@ -116,10 +116,119 @@ try{
 	require('socios/addsocio.php');
 	
 	}
+	
+	elseif($action == 'removesocio')
+	{
+	if(isset($_GET['rut_socio'])&&""!==$_GET['rut_socio'])
+		{
+			$filtros[]= array('rut_socio',$_GET['rut_socio']);
+			
+		}
+		if(isset($_GET['nombre'])&&""!==$_GET['nombre'])
+		{
+			$filtros[]= array('nombre',$_GET['nombre']);
+			
+		}
+		if(isset($_GET['email'])&&""!==$_GET['email'])
+		{
+			$filtros[]= array('email',$_GET['email']);
+			
+		}
+		if(isset($_GET['apellido_paterno'])&&""!==$_GET['apellido_paterno'])
+		{
+			$filtros[]= array('apellido_paterno',$_GET['apellido_paterno']);
+			
+		}
+		if(isset($_GET['apellido_materno'])&&""!==$_GET['apellido_materno'])
+		{
+			$filtros[]= array('apellido_materno',$_GET['apellido_materno']);
+			
+		}
+		if(isset($_GET['comuna'])&&""!==$_GET['comuna'])
+		{
+			$filtros[]= array('comuna',$_GET['comuna']);
+			
+		}
+		if(isset($_GET['sexo'])&&""!==$_GET['sexo'])
+		{
+			$filtros[]= array('sexo',$_GET['sexo']);
+			
+		}
+		if(isset($_GET['direccion'])&&""!==$_GET['direccion'])
+		{
+			$filtros[]= array('direccion',$_GET['direccion']);
+			
+		}
+		if(isset($_GET['fecha_registro'])&&""!==$_GET['fecha_registro'])
+		{
+			$filtros[]= array('fecha_registro',$_GET['fecha_registro']);
+			
+		}
+		if(isset($_GET['fecha_nacimiento'])&&""!==$_GET['fecha_nacimiento'])
+		{
+			$filtros[]= array('fecha_nacimiento',$_GET['fecha_nacimiento']);
+			
+		}
+		if(isset($_GET['telefono1'])&&""!==$_GET['telefono1'])
+		{
+			$filtros[]= array('telefono1',$_GET['telefono1']);
+			
+		}
+		if(isset($_GET['telefono2'])&&""!==$_GET['telefono2'])
+		{
+			$filtros[]= array('telefono2',$_GET['telefono2']);
+			
+		}
+		
+		$q='SELECT * FROM socio';
+		$strFiltros ='';
+		if(isset($filtros)){ 
+		
+		$strFiltros = ' WHERE ';
+		//concatena una sentencia AND por cada filtro guardado en la variable filtros
+		$i=0;
+		while($i<count($filtros)){
+			if($i>0){
+				$strFiltros.=' AND '.$filtros[$i][0].' ILIKE '."'%".$filtros[$i][1]."%'";
+				}
+			else{
+				$strFiltros.=$filtros[$i][0]." ILIKE "."'%".$filtros[$i][1]."%'";
+				}
+				$i++;
+				
+		}
+		}
+		$q=$q.$strFiltros.';'; //termina la consulta
+		Debugger::notice($q);
+		
+		
+	
+	
+	Debugger::notice('Se ha seleccionado removesocio');
+	require('socios/removesocio.php');
+	}
+	
+	elseif($action == 'quitarsocio')
+	{
+	Debugger::notice('Se ha seleccionado quitarsocio');
+	require('socios/quitarsocio.php');
+	}
+	
+	elseif($action == 'agregarsocio')
+	{
+	Debugger::notice('Se ha seleccionado agregarsocio');
+	require('socios/agregarsocio.php');
+	}
+	
 	elseif($action == 'addprograma')
 	{
 	Debugger::notice('Se ha seleccionado addprograma');
 	require('socios/addprograma.php');
+	}
+	elseif($action == 'agregarprograma')
+	{
+	Debugger::notice('Se ha seleccionado agregarprograma');
+	require('socios/agregarprograma.php');
 	}
 	
 	elseif($action == 'infosocio')
