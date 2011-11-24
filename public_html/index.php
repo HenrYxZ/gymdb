@@ -2,6 +2,17 @@
 // Cargar debugger
 require('class/Debugger.php');
 
+// Cargar token
+//require('class/Token.php');
+
+// Cargar resto de clases
+require('class/iUser.php');
+//require('class/Administrador.php');
+require('class/Entrenador.php');
+//require('class/Recepcionista.php');
+//require('class/Socio.php');
+
+
 // Obtener categoría.
 // Por defecto es default
 $cat = 'default';
