@@ -7,10 +7,10 @@ require('class/Debugger.php');
 
 // Cargar resto de clases
 require('class/iUser.php');
-//require('class/Administrador.php');
+require('class/Administrador.php');
 require('class/Entrenador.php');
-//require('class/Recepcionista.php');
-//require('class/Socio.php');
+require('class/Recepcionista.php');
+require('class/Socio.php');
 
 
 // Obtener categoría.
