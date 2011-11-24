@@ -30,14 +30,7 @@
 		
 		public function __construct($rut = '')
 		{
-			if($rut === '')
-			{
-				// Es nuevo
-				$this->rut = $rut;
-				
-				// El resto de valores debe llenarse con setters
-			}
-			else
+			if($rut !== '')
 			{
 				// Intentar recuperar con valores de la DB
 				try{
@@ -93,19 +86,18 @@
 					
 					// Preparar el statement sql
 					$stmt =	$dbh->prepare('
-						INSERT *
-						INTO entrenador(rut_entrenador, email, nombre, apellido_paterno, apellido_materno, sexo, tipo_entrenador)
+						INSERT INTO entrenador(rut_entrenador, email, nombre, apellido_paterno, apellido_materno, sexo, tipo_entrenador)
 						VALUES (:rut_entrenador, :email, :nombre, :apellido_paterno, :apellido_materno, :sexo, :tipo_entrenador)
 						');
 					
 					// Bind the parameters
-					$stmt->bindParam(':rut_entrenador', $rut, PDO::PARAM_STR);
-					$stmt->bindParam(':email', $email, PDO::PARAM_STR);
-					$stmt->bindParam(':nombre', $nombre, PDO::PARAM_STR);
-					$stmt->bindParam(':apellido_paterno', $apellidoPaterno, PDO::PARAM_STR);
-					$stmt->bindParam(':apellido_materno', $apellidoMaterno, PDO::PARAM_STR);
-					$stmt->bindParam(':sexo', $sexo, PDO::PARAM_STR);
-					$stmt->bindParam(':tipo_entrenador', $tipoEntrenador, PDO::PARAM_STR);
+					$stmt->bindParam(':rut_entrenador', $this->rut, PDO::PARAM_STR);
+					$stmt->bindParam(':email', $this->email, PDO::PARAM_STR);
+					$stmt->bindParam(':nombre', $this->nombre, PDO::PARAM_STR);
+					$stmt->bindParam(':apellido_paterno', $this->apellidoPaterno, PDO::PARAM_STR);
+					$stmt->bindParam(':apellido_materno', $this->apellidoMaterno, PDO::PARAM_STR);
+					$stmt->bindParam(':sexo', $this->sexo, PDO::PARAM_STR);
+					$stmt->bindParam(':tipo_entrenador', $this->tipoEntrenador, PDO::PARAM_STR);
 					
 					// Execute the prepared statement. Return TRUE on success or FALSE on failure
 					return $stmt->execute();
@@ -137,13 +129,13 @@
 						');
 					
 					// Bind the parameters
-					$stmt->bindParam(':rut_entrenador', $rut, PDO::PARAM_STR);
-					$stmt->bindParam(':email', $email, PDO::PARAM_STR);
-					$stmt->bindParam(':nombre', $nombre, PDO::PARAM_STR);
-					$stmt->bindParam(':apellido_paterno', $apellidoPaterno, PDO::PARAM_STR);
-					$stmt->bindParam(':apellido_materno', $apellidoMaterno, PDO::PARAM_STR);
-					$stmt->bindParam(':sexo', $sexo, PDO::PARAM_STR);
-					$stmt->bindParam(':tipo_entrenador', $tipoEntrenador, PDO::PARAM_STR);
+					$stmt->bindParam(':rut_entrenador', $this->rut, PDO::PARAM_STR);
+					$stmt->bindParam(':email', $this->email, PDO::PARAM_STR);
+					$stmt->bindParam(':nombre', $this->nombre, PDO::PARAM_STR);
+					$stmt->bindParam(':apellido_paterno', $this->apellidoPaterno, PDO::PARAM_STR);
+					$stmt->bindParam(':apellido_materno', $this->apellidoMaterno, PDO::PARAM_STR);
+					$stmt->bindParam(':sexo', $this->sexo, PDO::PARAM_STR);
+					$stmt->bindParam(':tipo_entrenador', $this->tipoEntrenador, PDO::PARAM_STR);
 					
 					// Execute the prepared statement. Return TRUE on success or FALSE on failure
 					return $stmt->execute();

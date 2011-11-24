@@ -108,7 +108,57 @@ header{
 	font-style:italic;
 }
 
+.selectUserType, .selectUser{
+	margin:auto;
+	padding:15px;
+	width:40%;
+	
+	background:#222 url(../img/metalTextureDarker.png);
+	border:1px solid #444;
+	
+	color:#fff;
+	
+	-moz-box-shadow: 0 0 15px #000;
+	-webkit-box-shadow: 0 0 15px #000;
+	box-shadow: 0 0 15px #000;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
 
+.selectUserType h1, .selectUserType h2, .selectUserType h3, .selectUserType h4, .selectUserType h5, .selectUserType h6,
+.selectUser h1, .selectUser h2, .selectUser h3, .selectUser h4, .selectUser h5, .selectUser h6{
+	margin-top:2px;
+}
+
+.selectUserType input, .selectUser input,
+.selectUserType button, .selectUser button
+{
+	display:block;
+	font-weight:bold;
+	
+	margin:10px 0;
+	height:30px;
+	height:3.0rem;
+	width:100%;
+}
+
+
+.selectUserType button, .selectUserType input[type="submit"],
+.selectUser button, .selectUser input[type="submit"]{
+	color:#ccc;
+	background:#000;
+	border:1px solid #ccc;
+	-webkit-border-radius: 7px;
+	-moz-border-radius: 7px;
+	border-radius: 7px;
+}
+
+.selectUserType button:hover, .selectUserType input[type="submit"]:hover,
+.selectUser button:hover, .selectUser input[type="submit"]:hover{
+	color:#fff;
+	background:#111;
+}
 
 footer{
 	margin-top:10px;
