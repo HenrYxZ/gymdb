@@ -95,7 +95,9 @@ try{
 			if($action == 'insertHorario')
 				$horario = new Horario();
 			elseif ($action == 'updateHorario')
+			{
 				$horario = new Horario($_GET['trainerId'], $_GET['fecha_inicio_original']); // -------------------OJO LA FECHA DE INICIO PUEDE SER DIFERENTE. DEBE TOMARSE LA ORIGINAL
+			}
 			
 			$horario->fechaInicio = $_GET['fecha_inicio'];
 			$horario->fechaTermino = $_GET['fecha_termino'];
@@ -126,6 +128,27 @@ try{
 			<?php
 			}
 			
+		}
+		elseif ($action == 'deleteHorario')
+		{
+			if( isset($_GET['trainerId']) && (strlen($_GET['trainerId']) > 0) &&
+				isset($_GET['fecha_inicio']) && (strlen($_GET['fecha_inicio']) > 0) )
+			{
+				$horario = new Horario($_GET['trainerId'], $_GET['fecha_inicio']);
+				if( $horario->delete() ){
+					$horario = null;
+					Debugger::notice('Horario eliminado.');
+				}
+				else
+					Debugger::notice('No se ha podido eliminar el horario');
+				
+				require('trainer/showAgenda.php');
+			}
+			else
+			{
+				Debugger::notice('No se cuenta con los campos requeridos.');
+				require('default.php');
+			}
 		}
 		else
 		{
