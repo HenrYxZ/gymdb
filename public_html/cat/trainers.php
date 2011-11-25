@@ -22,7 +22,7 @@ try{
 		require('trainers/index.php');
 		
 	}
-	elseif($action == 'showAgenda' || $action == 'showAppointments')
+	elseif($action == 'showAgenda' || $action == 'showAppointments' || $action == 'showAvailable')
 	{
 		if(isset($_GET['trainerId']) && (strlen($_GET['trainerId']) > 0))
 		{	
@@ -56,6 +56,16 @@ try{
 						AND rut_socio IS NOT NULL
 						ORDER BY fecha_inicio ASC';
 				require('trainers/showAppointments.php');
+			}
+			elseif ( $action == 'showAvailable' )
+			{
+				$q = 	'SELECT *
+						FROM Horario
+						WHERE rut_entrenador = \'' . $trainerId . '\'' .
+						'AND fecha_inicio >= CURRENT_TIMESTAMP
+						AND rut_socio IS NULL
+						ORDER BY fecha_inicio ASC';
+				require('trainers/showAvailable.php');
 			}
 			
 		}
