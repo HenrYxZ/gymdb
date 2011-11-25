@@ -10,9 +10,11 @@ if(isset($_GET['rutsocio']))
 	$querystr="SELECT * FROM socio WHERE rut_socio='$rutsocio'";
 	$stmt=$dbh->query($querystr);
 	$info=$stmt->fetch(PDO::FETCH_ASSOC);
+	$nomcompleto=$info['nombre'].' '.$info['apellido_paterno'].' '.$info['apellido_materno'];
+	$emailsocio=$info['email'];
 	?>
 	<table>
-	<tr><th colspan="2"><?php echo $info['nombre'].' '.$info['apellido_paterno'].' '.$info['apellido_materno']; ?></th></tr>
+	<tr><th colspan="2"><?php echo $nomcompleto; ?></th></tr>
 	<tr><td>E-mail:</td><td><?php echo $info['email']; ?></td></tr>
 	<tr><td>Rut:</td><td><?php echo $info['rut_socio']; ?></td></tr>
 	<tr><td>Sexo:</td><td><?php echo $info['sexo']; ?></td></tr>
@@ -30,14 +32,14 @@ if(isset($_GET['rutsocio']))
 	<tr><td>Estado Financiero: </td><td>Moroso</td></tr>
 	<?php
 	$i=0;
+	$cuotas=array();
 	foreach($stmtt as $cuota)
 	{
 	$i++;?>
 	<tr><td><?php echo 'Cuota vencida #'.$i;?></td><td><?php echo $cuota['fecha_termino']; ?></td></tr>
 	<?php
+	$cuotas[]=$cuota['fecha_termino'];
 	}
-	
-	
 	
 	
 	}
@@ -48,6 +50,11 @@ if(isset($_GET['rutsocio']))
 	<?php
 	}
 	echo '</table>';
+	
+	if($cuotasVencidas>0){
+	require('enviarmail.php');
+	}
+	
 	}
 	catch(PDOException $e){
 	Debugger::notice($e->getMessage());
