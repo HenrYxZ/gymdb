@@ -64,5 +64,5 @@ echo "Se ha ingresado un nuevo socio de nombre $nombre su matricula dura por $ti
 
 ?>	
 
-<p><a href="../../index.php?cat=socios&action=addsocio"> Volver a agregar otro socio</a></p>
-<p><a href="../../index.php"> Volver a la p&aacute;gina principal</a></p>
+<p><a href="index.php?cat=socios&action=addsocio"> Volver a agregar otro socio</a></p>
+<p><a href="index.php"> Volver a la p&aacute;gina principal</a></p>

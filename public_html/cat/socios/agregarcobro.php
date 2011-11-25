@@ -17,5 +17,5 @@ echo "Se ha ingresado un cobro de $cobro pesos al socio de rut $rut";
 $dbh = null;
 
 ?>
-<p><a href="../../index.php?cat=socios&action=addcobro"> Volver a agregar otro cobro</a></p>
-<p><a href="../../index.php"> Volver a la p&aacute;gina principal</a></p>
+<p><a href="index.php?cat=socios&action=addcobro"> Volver a agregar otro cobro</a></p>
+<p><a href="index.php"> Volver a la p&aacute;gina principal</a></p>
