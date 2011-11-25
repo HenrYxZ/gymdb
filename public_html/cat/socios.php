@@ -276,6 +276,66 @@ try{
 	}
 	
 	
+	elseif($action === 'addEvaluacion')
+	{
+		
+		
+		
+		if(isset($_GET['trainerId']) && (strlen($_GET['trainerId']) > 0))
+		{	
+			$trainerId = $_GET['trainerId'];
+		}
+		elseif( isset( $_SESSION['user'] ) )
+		{
+			if( get_class( $_SESSION['user'] ) === 'Entrenador' )
+				$trainerId = $_SESSION['user']->rut;
+		}
+		
+		if(isset($_GET['socioId']) && (strlen($_GET['socioId']) > 0))
+		{	
+			$trainerId = $_GET['socioId'];
+		}
+		
+		if(isset($trainerId))
+		{
+			if(isset($socioId))
+			{
+				$socio = new Socio($socioId);
+				$trainer = new Entrenador($trainerId);
+				
+				$qH = 'SELECT *
+					FROM horario
+					WHERE rut_entrenador = \'' . $trainerId . '\'
+					AND rut_socio ISNULL
+					AND fecha_inicio > CURRENT_TIMESTAMP
+					ORDER BY fecha_inicio ASC';
+				
+				require('socio/addEvaluacion.php');
+			}
+			else
+			{
+				Debugger::notice('No se defini&oacute; una id de socio.');
+			
+				// Mostrar formulario para seleccionar un trainer. Automáticamente vuelve a
+				// estas mismas cat y action, por encontrarse dentro de un require().
+				require('_selectSocio.php');
+			}
+		}
+		else
+		{
+			Debugger::notice('No se defini&oacute; una id de trainer.');
+			
+			// Mostrar formulario para seleccionar un socio. Automáticamente vuelve a
+			// estas mismas cat y action, por encontrarse dentro de un require().
+			require('_selectTrainer.php');
+		}	
+		
+		
+		
+		
+		
+	}	
+	
 	else{
 		Debugger::notice('Acci&oacute;n "' . $action . '" no reconocida.');
 		

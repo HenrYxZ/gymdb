@@ -16,6 +16,14 @@
 			<input type="hidden" name="cat" id="cat" value="<?php echo $cat; ?>" />
 			<input type="hidden" name="action" id="action" value="<?php echo $action; ?>" />
 			
+			<?php
+			if(isset($_GET['trainerId']))
+			{?>
+			<input type="hidden" name="trainerId" id="trainerId" value="<?php echo $_GET['trainerId']; ?>" />
+			<?php
+			}?>
+			
+			
 			<label for="socioId">Socio:</label>
 			<select name="socioId" id="socioId">
 				<option value="">--- Elegir ---</option>
