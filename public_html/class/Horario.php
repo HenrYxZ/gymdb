@@ -1,7 +1,7 @@
 <?php
 	class Horario
 	{
-		private static $tipos = array('Entrenamiento','Evaluación','Karate');
+		private static $tipos = array('Entrenamiento','Evaluacion','Karate');
 		
 		private static $notNullProperties = array('fechaInicio', 'fechaTermino', 'rutEntrenador');
 		
@@ -177,7 +177,7 @@
 							// Preparar el statement sql
 							$stmt =	$dbh->prepare('
 								UPDATE horario
-								SET fecha_inicio=:fecha_inicio, fecha_termino=:fecha_termino, rut_entrenador=:rut_entrenador, rut_socio=:rut_socio, tipo_actividad=NULL
+								SET fecha_inicio=:fecha_inicio, fecha_termino=:fecha_termino, rut_entrenador=:rut_entrenador, rut_socio=:rut_socio, tipo_actividad=DEFAULT
 								WHERE rut_entrenador=:rut_entrenador
 								AND fecha_inicio=:fecha_inicio
 								');
@@ -188,7 +188,7 @@
 						{
 							$stmt =	$dbh->prepare('
 								UPDATE horario
-								SET fecha_inicio=:fecha_inicio, fecha_termino=:fecha_termino, rut_entrenador=:rut_entrenador, tipo_actividad=NULL
+								SET fecha_inicio=:fecha_inicio, fecha_termino=:fecha_termino, rut_entrenador=:rut_entrenador, tipo_actividad=DEFAULT
 								WHERE rut_entrenador=:rut_entrenador
 								AND fecha_inicio=:fecha_inicio
 								');
