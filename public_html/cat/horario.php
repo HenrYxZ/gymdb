@@ -49,7 +49,37 @@ try{
 			
 		}
 	}
-	elseif($action == 'insertHorario')
+	elseif($action == 'editHorario')
+	{
+		if(isset($_GET['trainerId']) && (strlen($_GET['trainerId']) > 0))
+		{	
+			$trainerId = $_GET['trainerId'];
+		}		
+		
+		if(isset($trainerId))
+		{
+			$trainer = new Entrenador($trainerId);
+			
+			if( isset($_GET['fecha_inicio_original'] && (strlen($_GET['fecha_inicio_original']) > 0) )
+			{
+				$horario = new Horario($trainerId, $_GET['fecha_inicio_original']);
+				
+				require('horario/editHorario.php');
+			}
+			else
+			{
+				Debugger::notice('No se defini&oacute; una fecha de inicio para el horario. No se puede identificar el horario a editar.');
+			
+				require('default.php');
+			}
+		}
+		else{
+			Debugger::notice('No se defini&oacute; una id de entrenador. No se puede identificar el horario a editar.');
+			
+			require('default.php');
+		}
+	}
+	elseif($action == 'insertHorario' || $action == 'updateHorario')
 	{
 		if
 			(
@@ -59,38 +89,42 @@ try{
 				isset($_GET['tipo_actividad'])
 			)
 		{	
-			$trainerId = $_GET['trainerId'];
-			$fecha_inicio = $_GET['fecha_inicio'];
-			$fecha_termino = $_GET['fecha_termino'];
-			$tipo_actividad = $_GET['tipo_actividad'];
+			// Variable que tendrá al objeto Horario
+			$horario;
 			
-			if(strlen($tipo_actividad) > 0)
+			if($action == 'insertHorario')
+				$horario = new Horario();
+			elseif ($action == 'updateHorario')
+				$horario = new Horario($_GET['trainerId'], $_GET['fecha_inicio_original']); // -------------------OJO LA FECHA DE INICIO PUEDE SER DIFERENTE. DEBE TOMARSE LA ORIGINAL
+			
+			$horario->fechaInicio = $_GET['fecha_inicio'];
+			$horario->fechaTermino = $_GET['fecha_termino'];
+			$horario->rutEntrenador = $_GET['trainerId'];
+			
+			$horario->tipoActividad = $_GET['tipo_actividad'];
+			
+			$opOK;
+			if($action == 'insertHorario')
+				$opOK = $horario->insert();
+			elseif ($action == 'updateHorario')
+				$opOK = $horario->update();
+				
+			if($opOK)
 			{
-				$q = "INSERT INTO horario(rut_entrenador, fecha_inicio, fecha_termino, tipo_actividad) VALUES
-					('" .$trainerId. "',"
-					."'" .$fecha_inicio. "',"
-					."'" .$fecha_termino. "',"
-					."'" .$tipo_actividad. "'"
-					.")";
-			}
-			else
-			{
-				$q = "INSERT INTO horario(rut_entrenador, fecha_inicio, fecha_termino) VALUES
-					('" .$trainerId. "',"
-					."'" .$fecha_inicio. "',"
-					."'" .$fecha_termino. "'"
-					.")";
-			}
-			
-			$dbh->exec($q);
-			
-			Debugger::notice('Consulta ejecutada.');
 			?>
 			
-			<h2>Se ha insertado un nuevo horario</h2>
+			<h2>Se ha <?php if($action == 'insertHorario') echo 'creado'; elseif($action == 'updateHorario') echo 'actualizado'  ?> un horario</h2>
 			<p>Puede consultarlo desde la <a href="index.php?cat=trainers&action=showAgenda&trainerId=<?php echo $trainerId; ?>">agenda para el entrenador</a>.</p>
 			
 			<?php
+			}
+			else
+			{?>
+				<h2>No es posible crear o modificar el horario</h2>
+			
+				<p>Hubo un problema en la ejecuci&oacute;n de la consulta por parte del objeto PDO. Puede <a href="index.php?cat=horario&action=<?php echo $action; ?>">volver a intentarlo</a></p>
+			<?php
+			}
 			
 		}
 		else
@@ -100,7 +134,7 @@ try{
 			
 			<h2>No es posible crear el nuevo horario</h2>
 			
-			<p>No se cuenta con todos los campos requeridos. Puede <a href="index.php?cat=horario&action=newHorario">volver a intentarlo</a> desde el formulario.</p>
+			<p>No se cuenta con todos los campos requeridos. Puede <a href="index.php?cat=horario&action=<?php echo $action; ?>">volver a intentarlo</a> desde el formulario.</p>
 			
 			<?php
 		}

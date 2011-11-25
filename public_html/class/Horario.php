@@ -90,18 +90,29 @@
 						Debugger::notice($e->getMessage());
 					}
 					
-					// Preparar el statement sql
-					$stmt =	$dbh->prepare('
-						INSERT INTO horario(fecha_inicio, fecha_termino, rut_entrenador, rut_socio, tipo_actividad)
-						VALUES (:fecha_inicio, :fecha_termino, :rut_entrenador, :rut_socio, :tipo_actividad)
-						');
-					
+					if(strlen(trim($this->tipoActividad)) > 0) 
+					{
+						// Preparar el statement sql
+						$stmt =	$dbh->prepare('
+							INSERT INTO horario(fecha_inicio, fecha_termino, rut_entrenador, rut_socio, tipo_actividad)
+							VALUES (:fecha_inicio, :fecha_termino, :rut_entrenador, :rut_socio, :tipo_actividad)
+							');
+							
+						$stmt->bindParam(':tipo_actividad', $this->tipoActividad, PDO::PARAM_STR);
+					}
+					else
+					{
+						// Preparar el statement sql
+						$stmt =	$dbh->prepare('
+							INSERT INTO horario(fecha_inicio, fecha_termino, rut_entrenador, rut_socio)
+							VALUES (:fecha_inicio, :fecha_termino, :rut_entrenador, :rut_socio)
+							');
+					}
 					// Bind the parameters
-					$stmt->bindParam(':fecha_inicio', $fechaInicio, PDO::PARAM_STR);
-					$stmt->bindParam(':fecha_termino', $fechaTermino, PDO::PARAM_STR);
-					$stmt->bindParam(':rut_entrenador', $rutEntrenador, PDO::PARAM_STR);
-					$stmt->bindParam(':rut_socio', $rutSocio, PDO::PARAM_STR);
-					$stmt->bindParam(':tipo_actividad', $tipoActividad, PDO::PARAM_STR);
+					$stmt->bindParam(':fecha_inicio', $this->fechaInicio, PDO::PARAM_STR);
+					$stmt->bindParam(':fecha_termino', $this->fechaTermino, PDO::PARAM_STR);
+					$stmt->bindParam(':rut_entrenador', $this->rutEntrenador, PDO::PARAM_STR);
+					$stmt->bindParam(':rut_socio', $this->rutSocio, PDO::PARAM_STR);
 					
 					// Execute the prepared statement. Return TRUE on success or FALSE on failure
 					return $stmt->execute();
@@ -130,19 +141,34 @@
 						Debugger::notice($e->getMessage());
 					}
 					
-					// Preparar el statement sql
-					$stmt =	$dbh->prepare('
-						UPDATE socio
-						SET rut_socio=:rut_socio, email=:email, nombre=:nombre, apellido_paterno=:apellido_paterno, apellido_materno=:apellido_materno, sexo=:sexo, comuna=:comuna, direccion=:direccion, fecha_registro=:fecha_registro, fecha_nacimiento=:fecha_nacimiento, telefono1=:telefono1, telefono2=:telefono2
-						WHERE rut_socio=:rut_socio
-						');
-					
+					if(strlen(trim($this->tipoActividad)) > 0) 
+					{
+						// Preparar el statement sql
+						$stmt =	$dbh->prepare('
+							UPDATE horario
+							SET fecha_inicio=:fecha_inicio, fecha_termino=:fecha_termino, rut_entrenador=:rut_entrenador, rut_socio=:rut_socio, tipo_actividad=:tipo_actividad
+							WHERE rut_entrenador=:rut_entrenador
+							AND fecha_inicio=:fecha_inicio
+							');
+						
+						$stmt->bindParam(':tipo_actividad', $this->tipoActividad, PDO::PARAM_STR);
+					}
+					else
+					{
+						// Preparar el statement sql
+						$stmt =	$dbh->prepare('
+							UPDATE horario
+							SET fecha_inicio=:fecha_inicio, fecha_termino=:fecha_termino, rut_entrenador=:rut_entrenador, rut_socio=:rut_socio, tipo_actividad=NULL
+							WHERE rut_entrenador=:rut_entrenador
+							AND fecha_inicio=:fecha_inicio
+							');
+					}
 					// Bind the parameters
-					$stmt->bindParam(':fecha_inicio', $fechaInicio, PDO::PARAM_STR);
-					$stmt->bindParam(':fecha_termino', $fechaTermino, PDO::PARAM_STR);
-					$stmt->bindParam(':rut_entrenador', $rutEntrenador, PDO::PARAM_STR);
-					$stmt->bindParam(':rut_socio', $rutSocio, PDO::PARAM_STR);
-					$stmt->bindParam(':tipo_actividad', $tipoActividad, PDO::PARAM_STR);
+					$stmt->bindParam(':fecha_inicio', $this->fechaInicio, PDO::PARAM_STR);
+					$stmt->bindParam(':fecha_termino', $this->fechaTermino, PDO::PARAM_STR);
+					$stmt->bindParam(':rut_entrenador', $this->rutEntrenador, PDO::PARAM_STR);
+					$stmt->bindParam(':rut_socio', $this->rutSocio, PDO::PARAM_STR);
+					
 					
 					
 					// Execute the prepared statement. Return TRUE on success or FALSE on failure
