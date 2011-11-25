@@ -23,6 +23,8 @@ try{
 		
 	}
 	
+	
+	//***	Aquí está lista de socios	***
 	elseif($action == 'listsocios'){
 		if(isset($_GET['rut_socio'])&&""!==$_GET['rut_socio'])
 		{
@@ -110,13 +112,13 @@ try{
 		require('socios/listsocio.php');
 			
 	}
-	
+	//***	Aquí está addsocio	***
 	elseif($action == 'addsocio'){
 	Debugger::notice('Se ha seleccionado addsocio');
 	require('socios/addsocio.php');
 	
 	}
-	
+	//***	Aquí está eliminar socios	***
 	elseif($action == 'removesocio')
 	{
 	if(isset($_GET['rut_socio'])&&""!==$_GET['rut_socio'])
@@ -208,34 +210,72 @@ try{
 	require('socios/removesocio.php');
 	}
 	
+	//***	Aquí está quitar socios	***
 	elseif($action == 'quitarsocio')
 	{
 	Debugger::notice('Se ha seleccionado quitarsocio');
 	require('socios/quitarsocio.php');
 	}
-	
+	//***	Aquí está agregarsocio	***
 	elseif($action == 'agregarsocio')
 	{
 	Debugger::notice('Se ha seleccionado agregarsocio');
 	require('socios/agregarsocio.php');
 	}
-	
+	//***	Aquí está addprograma	***
 	elseif($action == 'addprograma')
 	{
 	Debugger::notice('Se ha seleccionado addprograma');
 	require('socios/addprograma.php');
 	}
+	//***	Aquí está el que recibe el post,agregar programa	***
 	elseif($action == 'agregarprograma')
 	{
 	Debugger::notice('Se ha seleccionado agregarprograma');
 	require('socios/agregarprograma.php');
 	}
-	
+	//***	Aquí está la info de socios	***
 	elseif($action == 'infosocio')
 	{
 	Debugger::notice('Se ha seleccionado infosocio');
 	require('socios/infosocio.php');
 	}
+	
+	
+	//***	Aquí está la página para cobrar a socios	***
+	elseif($action == 'addcobro')
+	{
+		if(isset($_GET['socioId']) && (strlen($_GET['socioId']) > 0))
+		{	
+			$socioId = $_GET['socioId'];
+		}
+		
+		if(isset($socioId))
+		{
+			
+				$qS =	'SELECT *
+					FROM Socio
+					WHERE rut_socio = \'' . $socioId . '\'';
+				
+				require('socios/addcobro.php');
+		}
+		else
+		{
+			Debugger::notice('No se defini&oacute; una id de socio.');
+			
+			// Mostrar formulario para seleccionar un socio. Automáticamente vuelve a
+			// estas mismas cat y action, por encontrarse dentro de un require().
+			require('_selectSocio.php');
+		}		
+	}
+	
+	elseif($action == 'agregarcobro')
+	{
+	Debugger::notice('Se ha seleccionado agregarcobro');
+	require('socios/agregarcobro.php');
+	}
+	
+	
 	else{
 		Debugger::notice('Acci&oacute;n "' . $action . '" no reconocida.');
 		
