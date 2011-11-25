@@ -22,7 +22,7 @@ try{
 		// Borrar todos los datos de sesión
 		session_destroy();
 		Debugger::notice('session_destroy()');
-		require('default.php');
+		require($folder.'/logout.php');
 	}
 	elseif( isset( $_SESSION['user'] ) )
 	{
