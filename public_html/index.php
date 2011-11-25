@@ -90,16 +90,20 @@ if(isset($_GET["cat"]) && strlen($_GET["cat"]) > 0)
 						elseif( get_class( $_SESSION['user'] ) === 'Recepcionista' )
 						{?>
 						<li>  
-							<a href="#">Recepcionista</a>  
+							<a href="#">Trainers</a>  
 							<ul class="subnav">  
 								<li><a href="index.php?cat=trainers&action=showTrainers">Ver todos los trainers</a></li>
 								<li><a href="index.php?cat=trainers&action=addTrainers">Registrar nuevo trainer</a></li>
-								<li><a href="index.php?cat=trainers&action=showAgenda">Ver agenda para un trainer</a></li>
-								
+								<li><a href="index.php?cat=trainers&action=showAgenda">Ver agenda para un trainer</a></li>							
+							</ul>  
+						</li>
+												<li>  
+							<a href="#">Socio</a>  
+							<ul class="subnav">  
 								<li><a href="index.php?cat=socios&action=listsocios">Ver todos los socios</a></li>
 								<li><a href="index.php?cat=socios&action=addsocio">Registrar nuevo socio</a></li>
-								<li><a href="#">Renovar matr&iacute;cula de un socio</a></li>
-								<li><a href="#">Pagar mensualidad de un socio</a></li>
+								<li><a href="#">Renovar matr&iacute;cula de un socio(falta)</a></li>
+								<li><a href="#">Pagar mensualidad de un socio(falta)</a></li>
 								
 							</ul>  
 						</li>
@@ -108,7 +112,7 @@ if(isset($_GET["cat"]) && strlen($_GET["cat"]) > 0)
 						elseif( get_class( $_SESSION['user'] ) === 'Administrador' )
 						{?>
 						<li>  
-							<a href="#">Administrador</a>  
+							<a href="#">Administracion</a>  
 							<ul class="subnav">  
 								<li><a href="index.php?cat=admin&action=verEquipamiento">Administrar equipamiento</a></li>
 								<li><a href="index.php?cat=admin&action=asistencia">Estad&iacute;sticas de socios</a></li>
