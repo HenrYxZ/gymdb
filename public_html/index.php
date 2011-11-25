@@ -60,7 +60,7 @@ if(isset($_GET["cat"]) && strlen($_GET["cat"]) > 0)
 					<?php
 					if( !isset( $_SESSION['user'] ) )
 					{
-						echo '<li><a href="#">Reg&iacute;strese en el gimnasio</a></li>';
+						echo '<li><a href="index.php?cat=socios&action=addsocio">Reg&iacute;strese en el gimnasio</a></li>';
 					}?>
 					<?php
 					if( isset( $_SESSION['user'] ) )
@@ -150,11 +150,19 @@ if(isset($_GET["cat"]) && strlen($_GET["cat"]) > 0)
 								<li><a href="index.php?cat=trainers&action=showAppointments">Ver compromisos pr&oacute;ximos</a></li>
 								<li><a href="index.php?cat=trainers&action=showAvailable">Ver horarios libres</a></li>
 								<li><a href="index.php?cat=horario&action=newHorario">Agregar horario disponible</a></li>
-								<li><a href="index.php?cat=horario&action=newHorario">Actualizar programa de un socio</a></li>
-								<li><a href="index.php?cat=socios&action=addprograma">Agregar programa de ejercicios para un socio</a></li>
-								<li><a href="index.php?cat=socios&action=addcobro">Agregar cobro por personal trainer para un socio</a></li>
 							</ul>  
 						</li>
+						
+						<li>
+							<a href="#">Socio</a>
+							<ul class="subnav">
+								<li><a href="index.php?cat=horario&action=newHorario">Actualizar programa</a></li>
+								<li><a href="index.php?cat=socios&action=addEvaluacion">Ingresar resultados de evaluaci&oacute;n</a></li>
+								<li><a href="index.php?cat=socios&action=addprograma">Agregar programa de ejercicios</a></li>
+								<li><a href="index.php?cat=socios&action=addcobro">Agregar cobro por personal trainer</a></li>
+							</ul>
+						</li>
+						
 						<?php
 						}
 					}?>
