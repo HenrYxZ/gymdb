@@ -18,8 +18,8 @@
 	}
  ?>   
 
-<p><a href="../../index.php?cat=socios&action=removesocio"> Volver a eliminar m&aacute;s socios</a></p>
-    <p><a href="../../index.php"> Volver a la p&aacute;gina principal</a></p>
+<p><a href="index.php?cat=socios&action=removesocio"> Volver a eliminar m&aacute;s socios</a></p>
+    <p><a href="index.php"> Volver a la p&aacute;gina principal</a></p>
 
 
    

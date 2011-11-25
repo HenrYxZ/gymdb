@@ -81,6 +81,7 @@ if(isset($_GET["cat"]) && strlen($_GET["cat"]) > 0)
 							<a href="#">Socio</a>  
 							<ul class="subnav">
 								<li><a href="index.php?cat=horario&action=setHorario">Agendar hora con un trainer</a></li>
+								<li><a href="index.php?cat=socios&action=listevaluaciones">Vea sus evaluaciones</a></li>
 								<li><a href="#">Renovar matr&iacute;cula</a></li>
 								<li><a href="#">Pagar mensualidad</a></li>
 							</ul>
@@ -102,9 +103,6 @@ if(isset($_GET["cat"]) && strlen($_GET["cat"]) > 0)
 							<ul class="subnav">  
 								<li><a href="index.php?cat=socios&action=listsocios">Ver todos los socios</a></li>
 								<li><a href="index.php?cat=socios&action=addsocio">Registrar nuevo socio</a></li>
-								<li><a href="#">Renovar matr&iacute;cula de un socio(falta)</a></li>
-								<li><a href="#">Pagar mensualidad de un socio(falta)</a></li>
-								
 							</ul>  
 						</li>
 						<?php
@@ -135,6 +133,7 @@ if(isset($_GET["cat"]) && strlen($_GET["cat"]) > 0)
 						<ul class="subnav">
 								<li><a href="index.php?cat=socios&action=listsocios">Ver todos los socios</a></li>
 								<li><a href="index.php?cat=socios&action=addsocio">Registrar nuevo socio</a></li>
+								<li><a href="index.php?cat=socios&action=removesocio">Eliminar un socio</a></li>
 								<li><a href="index.php?cat=socios&action=removesocio">Eliminar un socio</a></li>
 								<li><a href="#">Renovar matr&iacute;cula de un socio</a></li>
 								<li><a href="#">Pagar mensualidad de un socio</a></li>

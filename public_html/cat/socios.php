@@ -275,6 +275,43 @@ try{
 	require('socios/agregarcobro.php');
 	}
 	
+	elseif($action == 'listevaluaciones')
+	{
+		if(isset($_GET['socioId']) && (strlen($_GET['socioId']) > 0))
+		{	
+			$socioId = $_GET['socioId'];
+		}
+		elseif( isset( $_SESSION['user'] ) )
+		{
+			if( get_class( $_SESSION['user'] ) === 'Socio' )
+				$socioId = $_SESSION['user']->rut;
+		}
+		
+		if(isset($socioId))
+		{
+			$socio = new Socio($socioId);
+		
+			if ( $action == 'listevaluaciones' )
+			{
+				$q = 	"SELECT *
+						FROM ficha
+						WHERE rut_socio = '$socioId'";
+						
+				require('socios/listevaluaciones.php');
+			}
+			
+			
+		}
+		else{
+			Debugger::notice('No se defini&oacute; una id de socio.');
+			
+			// Mostrar formulario para seleccionar un socio. Automáticamente vuelve a
+			// estas mismas cat y action, por encontrarse dentro de un require().
+			require('_selectSocio.php');
+			
+		}
+	}
+	
 	
 	elseif($action === 'addEvaluacion')
 	{

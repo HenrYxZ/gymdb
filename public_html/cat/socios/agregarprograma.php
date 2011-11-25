@@ -42,5 +42,5 @@ else
     
     ?> 
 
-    <p><a href="../../index.php?cat=socios&action=addprograma"> Volver a agregar otro programa de ejercicio</a></p>
-    <p><a href="../../index.php"> Volver a la p&aacute;gina principal</a></p>
+    <p><a href="index.php?cat=socios&action=addprograma"> Volver a agregar otro programa de ejercicio</a></p>
+    <p><a href="index.php"> Volver a la p&aacute;gina principal</a></p>
