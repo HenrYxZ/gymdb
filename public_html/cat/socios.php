@@ -330,7 +330,7 @@ try{
 		
 		if(isset($_GET['socioId']) && (strlen($_GET['socioId']) > 0))
 		{	
-			$trainerId = $_GET['socioId'];
+			$socioId = $_GET['socioId'];
 		}
 		
 		if(isset($trainerId))
