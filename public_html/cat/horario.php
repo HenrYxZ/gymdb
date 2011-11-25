@@ -111,6 +111,11 @@ try{
 		{	
 			$socioId = $_GET['socioId'];
 		}
+		elseif( isset( $_SESSION['user'] ) )
+		{
+			if( get_class( $_SESSION['user'] ) === 'Socio' )
+				$socioId = $_SESSION['user']->rut;
+		}
 		
 		if(isset($_GET['trainerId']) && (strlen($_GET['trainerId']) > 0))
 		{	
