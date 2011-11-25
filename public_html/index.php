@@ -110,20 +110,31 @@ if(isset($_GET["cat"]) && strlen($_GET["cat"]) > 0)
 						<li>  
 							<a href="#">Administrador</a>  
 							<ul class="subnav">  
+								<li><a href="index.php?cat=admin&action=verEquipamiento">Administrar equipamiento</a></li>
+								<li><a href="index.php?cat=admin&action=asistencia">Estad&iacute;sticas de socios</a></li>
+								<li><a href="index.php?cat=admin&action=vermorosos">Ver informaci&oacute;n de pagos</a></li>
+								
+							</ul>
+							
+						</li>
+						<li>
+						<a hres="#">Trainers</a>
+						<ul class="subnav">
 								<li><a href="index.php?cat=trainers&action=showTrainers">Ver todos los trainers</a></li>
 								<li><a href="index.php?cat=trainers&action=addTrainers">Registrar nuevo trainer</a></li>
 								<li><a href="index.php?cat=horario&action=newHorario">Agregar horario disponible para trainer</a></li>
 								<li><a href="index.php?cat=trainers&action=showAgenda">Ver agenda para un trainer</a></li>
-								<li><a href="index.php?cat=admin&action=verEquipamiento">Administrar equipamiento</a></li>
+						</ul>
+						</li>
+												<li>
+						<a hres="#">Socios</a>
+						<ul class="subnav">
 								<li><a href="index.php?cat=socios&action=listsocios">Ver todos los socios</a></li>
 								<li><a href="index.php?cat=socios&action=addsocio">Registrar nuevo socio</a></li>
 								<li><a href="index.php?cat=socios&action=removesocio">Eliminar un socio</a></li>
-								<li><a href="index.php?cat=admin&action=asistencia">Estad&iacute;sticas de socios</a></li>
 								<li><a href="#">Renovar matr&iacute;cula de un socio</a></li>
 								<li><a href="#">Pagar mensualidad de un socio</a></li>
-								<li><a href="index.php?cat=admin&action=vermorosos">Ver informaci&oacute;n de pagos</a></li>
-								
-							</ul>  
+						</ul>
 						</li>
 						<?php
 						}
