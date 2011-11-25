@@ -10,8 +10,6 @@
 		private $apellidoMaterno;
 		private $sexo;
 		
-		private $dbh;
-		
 		
 		public function __get($property) {
 			if(array_key_exists($property,get_class_vars(__CLASS__)))
@@ -29,7 +27,15 @@
 		
 		public function __construct($rut = '')
 		{
-			$this->dbh = &PDOFactory::getPDOObject();
+			// Intentar crear una variable dbh que contiene el objeto PDO inicializado
+			try{
+				$dbh = &PDOFactory::getPDOObject();
+			}
+			catch(PDOException $e)
+			{
+				Debugger::notice($e->getMessage());
+			}
+			
 			
 			if($rut !== '')
 			{
@@ -40,7 +46,7 @@
 					*/
 					
 					// Preparar el statement sql
-					$stmt =	$this->dbh->prepare('
+					$stmt =	$dbh->prepare('
 						SELECT *
 						FROM recepcionista
 						WHERE rut_recepcionista = :rut_recepcionista
@@ -81,11 +87,16 @@
 			{
 				try{
 					// Intentar crear una variable dbh que contiene el objeto PDO inicializado
-					/* require('_connect.php');
-					*/
+					try{
+						$dbh = &PDOFactory::getPDOObject();
+					}
+					catch(PDOException $e)
+					{
+						Debugger::notice($e->getMessage());
+					}
 					
 					// Preparar el statement sql
-					$stmt =	$this->dbh->prepare('
+					$stmt =	$dbh->prepare('
 						INSERT INTO recepcionista(rut_recepcionista, email, nombre, apellido_paterno, apellido_materno, sexo)
 						VALUES (:rut_recepcionista, :email, :nombre, :apellido_paterno, :apellido_materno, :sexo)
 						');
@@ -117,11 +128,16 @@
 			{
 				try{
 					// Intentar crear una variable dbh que contiene el objeto PDO inicializado
-					/* require('_connect.php');
-					*/
+					try{
+						$dbh = &PDOFactory::getPDOObject();
+					}
+					catch(PDOException $e)
+					{
+						Debugger::notice($e->getMessage());
+					}
 					
 					// Preparar el statement sql
-					$stmt =	$this->dbh->prepare('
+					$stmt =	$dbh->prepare('
 						UPDATE recepcionista
 						SET rut_recepcionista=:rut_recepcionista, email=:email, nombre=:nombre, apellido_paterno=:apellido_paterno, apellido_materno=:apellido_materno, sexo=:sexo
 						WHERE rut_recepcionista=:rut_recepcionista

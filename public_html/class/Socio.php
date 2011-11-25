@@ -15,9 +15,7 @@
 		private $fechaNacimiento;
 		private $telefono1;
 		private $telefono2;
-		
-		private $dbh;
-		
+				
 		public function __get($property) {
 			if(array_key_exists($property,get_class_vars(__CLASS__)))
 				return $this->$property;
@@ -34,7 +32,14 @@
 		
 		public function __construct($rut = '')
 		{
-			$this->dbh = &PDOFactory::getPDOObject();
+			// Intentar crear una variable dbh que contiene el objeto PDO inicializado
+			try{
+				$dbh = &PDOFactory::getPDOObject();
+			}
+			catch(PDOException $e)
+			{
+				Debugger::notice($e->getMessage());
+			}
 			
 			if($rut !== '')
 			{
@@ -45,7 +50,7 @@
 					*/
 					
 					// Preparar el statement sql
-					$stmt =	$this->dbh->prepare('
+					$stmt =	$dbh->prepare('
 						SELECT *
 						FROM socio
 						WHERE rut_socio = :rut_socio
@@ -95,11 +100,16 @@
 			{
 				try{
 					// Intentar crear una variable dbh que contiene el objeto PDO inicializado
-					/* require('_connect.php');
-					*/
+					try{
+						$dbh = &PDOFactory::getPDOObject();
+					}
+					catch(PDOException $e)
+					{
+						Debugger::notice($e->getMessage());
+					}
 					
 					// Preparar el statement sql
-					$stmt =	$this->dbh->prepare('
+					$stmt =	$dbh->prepare('
 						INSERT INTO socio(rut_socio, email, nombre, apellido_paterno, apellido_materno, sexo, comuna, direccion, fecha_registro, fecha_nacimiento, telefono1, telefono2)
 						VALUES (:rut_socio, :email, :nombre, :apellido_paterno, :apellido_materno, :sexo, :comuna, :direccion, :fecha_registro, :fecha_nacimiento, :telefono1, :telefono2)
 						');
@@ -141,11 +151,16 @@
 			{
 				try{
 					// Intentar crear una variable dbh que contiene el objeto PDO inicializado
-					/* require('_connect.php');
-					*/
+					try{
+						$dbh = &PDOFactory::getPDOObject();
+					}
+					catch(PDOException $e)
+					{
+						Debugger::notice($e->getMessage());
+					}
 					
 					// Preparar el statement sql
-					$stmt =	$this->dbh->prepare('
+					$stmt =	$dbh->prepare('
 						UPDATE socio
 						SET rut_socio=:rut_socio, email=:email, nombre=:nombre, apellido_paterno=:apellido_paterno, apellido_materno=:apellido_materno, sexo=:sexo, comuna=:comuna, direccion=:direccion, fecha_registro=:fecha_registro, fecha_nacimiento=:fecha_nacimiento, telefono1=:telefono1, telefono2=:telefono2
 						WHERE rut_socio=:rut_socio

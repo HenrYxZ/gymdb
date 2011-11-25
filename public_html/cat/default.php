@@ -1,5 +1,4 @@
-<h2>Bienvenido al portal de nuestro gimnasio
-<?php
+<h2>Bienvenido al portal de nuestro gimnasio<?php
 	if(isset($_SESSION['user']))
 		echo ', ' . $_SESSION['user']->nombre;
 

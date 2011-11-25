@@ -1,7 +1,4 @@
 <?php
-session_start(); // Permitir guardar info en sesión
-
-
 // Cargar debugger
 require('class/Debugger.php');
 require('class/PDOFactory.php');
@@ -16,6 +13,9 @@ require('class/Entrenador.php');
 require('class/Recepcionista.php');
 require('class/Socio.php');
 
+// Permitir guardar info en sesión
+// Debe estar después de la declaración de clases para permitir deserializar los objetos (si es que se guardara alguno en sesión)
+session_start(); 
 
 // Obtener categoría.
 // Por defecto es default
@@ -107,7 +107,14 @@ if(isset($_GET["cat"]) && strlen($_GET["cat"]) > 0)
 			</div>
 			<div id="content">
 			<?php
-				require('cat/' . $cat . '.php');
+				try
+				{
+					require('cat/' . $cat . '.php');
+				}
+				catch(Exception $e)
+				{
+					Debugger::notice($e->getMessage());
+				}
 			?>
 			</div>
 			<footer>

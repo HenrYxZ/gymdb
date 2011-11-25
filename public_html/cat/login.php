@@ -46,7 +46,7 @@ try{
 			if(isset($socioId))
 			{
 				// Guardar el objeto socio con todos sus datos en una variable de sesión
-				$_SESSION['user'] = new Socio($socioId, $dbh);
+				$_SESSION['user'] = new Socio($socioId);
 				require($folder.'/redirect.php');
 			}
 			else{
@@ -67,7 +67,7 @@ try{
 			if(isset($recepcionistaId))
 			{
 				// Guardar el objeto recepcionista con todos sus datos en una variable de sesión
-				$_SESSION['user'] = new Recepcionista($recepcionistaId, $dbh);
+				$_SESSION['user'] = new Recepcionista($recepcionistaId);
 				require($folder.'/redirect.php');
 			}
 			else{
@@ -88,7 +88,7 @@ try{
 			if(isset($administradorId))
 			{
 				// Guardar el objeto administrador con todos sus datos en una variable de sesión
-				$_SESSION['user'] = new Administrador($administradorId, $dbh);
+				$_SESSION['user'] = new Administrador($administradorId);
 				require($folder.'/redirect.php');
 			}
 			else{
@@ -109,7 +109,7 @@ try{
 			if(isset($trainerId))
 			{
 				// Guardar el objeto trainer con todos sus datos en una variable de sesión
-				$_SESSION['user'] = new Entrenador($trainerId, $dbh);
+				$_SESSION['user'] = new Entrenador($trainerId);
 				require($folder.'/redirect.php');
 			}
 			else{
