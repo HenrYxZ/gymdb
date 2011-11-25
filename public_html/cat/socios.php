@@ -410,11 +410,11 @@ try{
 			
 			if($stmt->execute())
 			{
-				echo '<h2>Se ha agregado una nueva evaluaci&oacute;n/h2>'
+				echo '<h2>Se ha agregado una nueva evaluaci&oacute;n/h2>';
 			}
 			else
 			{
-				echo '<h2>Error al agregar una nueva evaluaci&oacute;n/h2>'
+				echo '<h2>Error al agregar una nueva evaluaci&oacute;n/h2>';
 			}
 			
 			
