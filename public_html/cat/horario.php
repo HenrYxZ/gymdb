@@ -135,8 +135,14 @@ try{
 				isset($_GET['fecha_inicio']) && (strlen($_GET['fecha_inicio']) > 0) )
 			{
 				$horario = new Horario($_GET['trainerId'], $_GET['fecha_inicio']);
-				$horario->delete();
-				$horario = null;
+				if( $horario->delete() ){
+					$horario = null;
+					Debugger::notice('Horario eliminado.');
+				}
+				else
+					Debugger::notice('No se ha podido eliminar el horario');
+				
+				require('trainer/showAgenda.php');
 			}
 			else
 			{
