@@ -95,7 +95,9 @@ try{
 			if($action == 'insertHorario')
 				$horario = new Horario();
 			elseif ($action == 'updateHorario')
+			{
 				$horario = new Horario($_GET['trainerId'], $_GET['fecha_inicio_original']); // -------------------OJO LA FECHA DE INICIO PUEDE SER DIFERENTE. DEBE TOMARSE LA ORIGINAL
+			}
 			
 			$horario->fechaInicio = $_GET['fecha_inicio'];
 			$horario->fechaTermino = $_GET['fecha_termino'];
