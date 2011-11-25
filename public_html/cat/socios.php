@@ -315,7 +315,9 @@ try{
 	
 	elseif($action === 'addEvaluacion')
 	{
+		$trainerId;
 		
+		$socioId;
 		
 		
 		if(isset($_GET['trainerId']) && (strlen($_GET['trainerId']) > 0))
@@ -347,7 +349,7 @@ try{
 					AND fecha_inicio > CURRENT_TIMESTAMP
 					ORDER BY fecha_inicio ASC';
 				
-				require('socio/addEvaluacion.php');
+				require('socios/addEvaluacion.php');
 			}
 			else
 			{
