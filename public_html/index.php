@@ -149,6 +149,7 @@ if(isset($_GET["cat"]) && strlen($_GET["cat"]) > 0)
 							<ul class="subnav">
 								<li><a href="index.php?cat=trainers&action=showAgenda">Ver agenda</a></li>
 								<li><a href="index.php?cat=trainers&action=showAppointments">Ver compromisos pr&oacute;ximos</a></li>
+								<li><a href="index.php?cat=trainers&action=showAvailable">Ver horarios libres</a></li>
 								<li><a href="index.php?cat=horario&action=newHorario">Agregar horario disponible</a></li>
 								<li><a href="index.php?cat=horario&action=newHorario">Actualizar programa de un socio</a></li>
 								<li><a href="index.php?cat=socios&action=addprograma">Agregar programa de ejercicios para un socio</a></li>
