@@ -146,31 +146,58 @@
 					
 					if(strlen(trim($this->tipoActividad)) > 0) 
 					{
-						// Preparar el statement sql
-						$stmt =	$dbh->prepare('
-							UPDATE horario
-							SET fecha_inicio=:fecha_inicio, fecha_termino=:fecha_termino, rut_entrenador=:rut_entrenador, rut_socio=:rut_socio, tipo_actividad=:tipo_actividad
-							WHERE rut_entrenador=:rut_entrenador
-							AND fecha_inicio=:fecha_inicio
-							');
-						
+						if(strlen(trim($this->rutSocio) > 0))
+						{
+							// Preparar el statement sql
+							$stmt =	$dbh->prepare('
+								UPDATE horario
+								SET fecha_inicio=:fecha_inicio, fecha_termino=:fecha_termino, rut_entrenador=:rut_entrenador, rut_socio=:rut_socio, tipo_actividad=:tipo_actividad
+								WHERE rut_entrenador=:rut_entrenador
+								AND fecha_inicio=:fecha_inicio
+								');
+							$stmt->bindParam(':rut_socio', $this->rutSocio, PDO::PARAM_STR);
+						}
+						else
+						{
+							// Preparar el statement sql
+							$stmt =	$dbh->prepare('
+								UPDATE horario
+								SET fecha_inicio=:fecha_inicio, fecha_termino=:fecha_termino, rut_entrenador=:rut_entrenador, tipo_actividad=:tipo_actividad
+								WHERE rut_entrenador=:rut_entrenador
+								AND fecha_inicio=:fecha_inicio
+								');
+						}
+							
 						$stmt->bindParam(':tipo_actividad', $this->tipoActividad, PDO::PARAM_STR);
 					}
 					else
 					{
-						// Preparar el statement sql
-						$stmt =	$dbh->prepare('
-							UPDATE horario
-							SET fecha_inicio=:fecha_inicio, fecha_termino=:fecha_termino, rut_entrenador=:rut_entrenador, rut_socio=:rut_socio, tipo_actividad=NULL
-							WHERE rut_entrenador=:rut_entrenador
-							AND fecha_inicio=:fecha_inicio
-							');
+						if(strlen(trim($this->rutSocio)) > 0)
+						{
+							// Preparar el statement sql
+							$stmt =	$dbh->prepare('
+								UPDATE horario
+								SET fecha_inicio=:fecha_inicio, fecha_termino=:fecha_termino, rut_entrenador=:rut_entrenador, rut_socio=:rut_socio, tipo_actividad=NULL
+								WHERE rut_entrenador=:rut_entrenador
+								AND fecha_inicio=:fecha_inicio
+								');
+							
+							$stmt->bindParam(':rut_socio', $this->rutSocio, PDO::PARAM_STR);
+						}
+						else
+						{
+							$stmt =	$dbh->prepare('
+								UPDATE horario
+								SET fecha_inicio=:fecha_inicio, fecha_termino=:fecha_termino, rut_entrenador=:rut_entrenador, tipo_actividad=NULL
+								WHERE rut_entrenador=:rut_entrenador
+								AND fecha_inicio=:fecha_inicio
+								');
+						}
 					}
 					// Bind the parameters
 					$stmt->bindParam(':fecha_inicio', $this->fechaInicio, PDO::PARAM_STR);
 					$stmt->bindParam(':fecha_termino', $this->fechaTermino, PDO::PARAM_STR);
 					$stmt->bindParam(':rut_entrenador', $this->rutEntrenador, PDO::PARAM_STR);
-					$stmt->bindParam(':rut_socio', $this->rutSocio, PDO::PARAM_STR);
 					
 					
 					
