@@ -50,8 +50,15 @@ if($tipomatricula == '6 meses')
 		$meses='6 months';
 	}
 //Luego se debe cambiar null por rut de recepcionista
+$recep=null;
+if( isset( $_SESSION['user'] ) )
+		{
+			if( get_class( $_SESSION['user'] ) === 'Recepcionista' )
+				$recep = $_SESSION['user']->rut;
+		}
+		
 if(!$repetido){
-$sql= "INSERT INTO matriculas VALUES ('$rut',localtimestamp(0),NULL,localtimestamp(0)+'$meses','$tipopago',$monto)";	
+$sql= "INSERT INTO matriculas VALUES ('$rut',localtimestamp(0),'$recep',localtimestamp(0)+'$meses','$tipopago',$monto)";	
 Debugger::notice($sql);
 $dbh->exec($sql);
 }
@@ -60,7 +67,7 @@ $dbh=null;
 if($repetido)
 echo "No se ha ingresado el nuevo socio, porque ese rut ya existe";
 else
-echo "Se ha ingresado un nuevo socio de nombre $nombre su matricula dura por $tipomatricula";
+echo "Se ha ingresado un nuevo socio de nombre $nombre su matricula dura por $tipomatricula y tuvo un costo de $monto fue pagada con $tipopago";
 
 ?>	
 

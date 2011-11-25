@@ -151,7 +151,7 @@ $.datepicker.setDefaults( $.datepicker.regional[ "" ] );
 </script>
 
 <h1> Agregar un nuevo Socio</h1>
-<form name="input" action="index.php?cat=socios&action=quitarsocio" method="post">
+<form name="input" action="index.php?cat=socios&action=agregarsocio" method="post">
 <table border="0">
 <tr>
 	<td>Rut: </td>
@@ -218,6 +218,7 @@ $.datepicker.setDefaults( $.datepicker.regional[ "" ] );
 	<option value="12 meses"> 12 Meses</option>
 	</select>
 	</td>
+	<?php if( !isset( $_SESSION['user'] ) ) {?>
 	<td>Tipo de pago:</td>
 	<td>
 	<select name="tipopago">
@@ -226,7 +227,8 @@ $.datepicker.setDefaults( $.datepicker.regional[ "" ] );
 	<option value="Efectivo"> Efectivo</option>
 	</select>
 	</td>
-	</td>
+	<?php }
+	else {?> <input type="hidden" name="tipopago" value="Tarjeta Credito" /> <?php } ?>
 	</tr>
 </table></br>
 <input type="button" value="Agregar" onclick="validar()"/> <input type="reset" />
