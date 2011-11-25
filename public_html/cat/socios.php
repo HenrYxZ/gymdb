@@ -297,7 +297,7 @@ try{
 						FROM ficha
 						WHERE rut_socio = '$socioId'";
 						
-				require('socio/listevaluaciones.php');
+				require('socios/listevaluaciones.php');
 			}
 			
 			
