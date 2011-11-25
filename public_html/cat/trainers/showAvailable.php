@@ -29,7 +29,7 @@ foreach($dbh->query($q) as $row){
 			{?>
 			<td class="actions">
 				<ul>
-					<!-- <li><a href="#">Editar</a></li> -->
+					<li><a href="index.php?cat=horario&action=editHorario&trainerId=<?php echo $row['rut_entrenador']; ?>&fecha_inicio_original=<?php echo $row['fecha_inicio']; ?>">Editar</a></li>
 					<li><a href="#">Eliminar</a></li>
 				</ul>
 			</td>

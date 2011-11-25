@@ -88,6 +88,7 @@
 					catch(PDOException $e)
 					{
 						Debugger::notice($e->getMessage());
+						return false;
 					}
 					
 					if(strlen(trim($this->tipoActividad)) > 0) 
@@ -124,6 +125,7 @@
 			else
 			{
 				Debugger::notice('Existe un campo nulo en el objeto de la clase ' . __CLASS__);
+				return false;
 			}
 		}
 		
@@ -139,6 +141,7 @@
 					catch(PDOException $e)
 					{
 						Debugger::notice($e->getMessage());
+						return false;
 					}
 					
 					if(strlen(trim($this->tipoActividad)) > 0) 
@@ -181,6 +184,7 @@
 			else
 			{
 				Debugger::notice('Existe un campo nulo en el objeto de la clase ' . __CLASS__);
+				return false;
 			}
 		}
 		
@@ -195,6 +199,7 @@
 				catch(PDOException $e)
 				{
 					Debugger::notice($e->getMessage());
+					return false;
 				}
 				
 				// Preparar el statement sql
@@ -215,6 +220,7 @@
 			catch(PDOException $e)
 			{
 				Debugger::notice($e->getMessage());
+				return false;
 			}	
 		}
 	

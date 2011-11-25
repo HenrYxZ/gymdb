@@ -114,7 +114,7 @@ try{
 			?>
 			
 			<h2>Se ha <?php if($action == 'insertHorario') echo 'creado'; elseif($action == 'updateHorario') echo 'actualizado'  ?> un horario</h2>
-			<p>Puede consultarlo desde la <a href="index.php?cat=trainers&action=showAgenda&trainerId=<?php echo $trainerId; ?>">agenda para el entrenador</a>.</p>
+			<p>Puede consultarlo desde la <a href="index.php?cat=trainers&action=showAgenda&trainerId=<?php echo $_GET['trainerId']; ?>">agenda para el entrenador</a>.</p>
 			
 			<?php
 			}

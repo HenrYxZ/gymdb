@@ -92,6 +92,7 @@
 					catch(PDOException $e)
 					{
 						Debugger::notice($e->getMessage());
+						return false;
 					}
 					
 					// Preparar el statement sql
@@ -113,11 +114,13 @@
 				}
 				catch(PDOException $e){
 					Debugger::notice($e->getMessage());
+					return false;
 				}
 			}
 			else
 			{
 				Debugger::notice('Existe un campo nulo en el objeto de la clase ' . __CLASS__);
+				return false;
 			}
 		}
 		
@@ -133,6 +136,7 @@
 					catch(PDOException $e)
 					{
 						Debugger::notice($e->getMessage());
+						return false;
 					}
 							
 					// Preparar el statement sql
@@ -155,11 +159,13 @@
 				}
 				catch(PDOException $e){
 					Debugger::notice($e->getMessage());
+					return false;
 				}
 			}
 			else
 			{
 				Debugger::notice('Existe un campo nulo en el objeto de la clase ' . __CLASS__);
+				return false;
 			}
 		}
 		
