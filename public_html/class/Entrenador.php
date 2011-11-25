@@ -13,6 +13,8 @@
 		private $sexo;
 		private $tipoEntrenador;
 		
+		private $dbh;
+		
 		
 		public function __get($property) {
 			if(array_key_exists($property,get_class_vars(__CLASS__)))
@@ -30,6 +32,8 @@
 		
 		public function __construct($rut = '')
 		{
+			$this->dbh = &PDOFactory::getPDOObject();
+			
 			if($rut !== '')
 			{
 				// Intentar recuperar con valores de la DB
@@ -39,7 +43,7 @@
 					*/
 					
 					// Preparar el statement sql
-					$stmt =	$dbh->prepare('
+					$stmt =	$this->dbh->prepare('
 						SELECT *
 						FROM entrenador
 						WHERE rut_entrenador = :rut_entrenador
@@ -85,7 +89,7 @@
 					*/
 					
 					// Preparar el statement sql
-					$stmt =	$dbh->prepare('
+					$stmt =	$this->dbh->prepare('
 						INSERT INTO entrenador(rut_entrenador, email, nombre, apellido_paterno, apellido_materno, sexo, tipo_entrenador)
 						VALUES (:rut_entrenador, :email, :nombre, :apellido_paterno, :apellido_materno, :sexo, :tipo_entrenador)
 						');
@@ -122,7 +126,7 @@
 					*/
 					
 					// Preparar el statement sql
-					$stmt =	$dbh->prepare('
+					$stmt =	$this->dbh->prepare('
 						UPDATE entrenador
 						SET rut_entrenador=:rut_entrenador, email=:email, nombre=:nombre, apellido_paterno=:apellido_paterno, apellido_materno=:apellido_materno, sexo=:sexo, tipo_entrenador=:tipo_entrenador
 						WHERE rut_entrenador=:rut_entrenador

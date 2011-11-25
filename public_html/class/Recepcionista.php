@@ -10,6 +10,8 @@
 		private $apellidoMaterno;
 		private $sexo;
 		
+		private $dbh;
+		
 		
 		public function __get($property) {
 			if(array_key_exists($property,get_class_vars(__CLASS__)))
@@ -27,6 +29,8 @@
 		
 		public function __construct($rut = '')
 		{
+			$this->dbh = &PDOFactory::getPDOObject();
+			
 			if($rut !== '')
 			{
 				// Intentar recuperar con valores de la DB
@@ -36,7 +40,7 @@
 					*/
 					
 					// Preparar el statement sql
-					$stmt =	$dbh->prepare('
+					$stmt =	$this->dbh->prepare('
 						SELECT *
 						FROM recepcionista
 						WHERE rut_recepcionista = :rut_recepcionista
@@ -81,7 +85,7 @@
 					*/
 					
 					// Preparar el statement sql
-					$stmt =	$dbh->prepare('
+					$stmt =	$this->dbh->prepare('
 						INSERT INTO recepcionista(rut_recepcionista, email, nombre, apellido_paterno, apellido_materno, sexo)
 						VALUES (:rut_recepcionista, :email, :nombre, :apellido_paterno, :apellido_materno, :sexo)
 						');
@@ -117,7 +121,7 @@
 					*/
 					
 					// Preparar el statement sql
-					$stmt =	$dbh->prepare('
+					$stmt =	$this->dbh->prepare('
 						UPDATE recepcionista
 						SET rut_recepcionista=:rut_recepcionista, email=:email, nombre=:nombre, apellido_paterno=:apellido_paterno, apellido_materno=:apellido_materno, sexo=:sexo
 						WHERE rut_recepcionista=:rut_recepcionista

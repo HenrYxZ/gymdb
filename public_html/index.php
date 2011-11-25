@@ -1,6 +1,10 @@
 <?php
+session_start(); // Permitir guardar info en sesión
+
+
 // Cargar debugger
 require('class/Debugger.php');
+require('class/PDOFactory.php');
 
 // Cargar token
 //require('class/Token.php');
@@ -101,8 +105,15 @@ if(isset($_GET["cat"]) && strlen($_GET["cat"]) > 0)
 				</ul>
 			</div>
 			<div id="content">
+			<div>
+			<?php
+				Debugger::notice(print_r($_SESSION));
+			?>
+			</div>
 			<?php
 				require('cat/' . $cat . '.php');
+			?><?php
+				Debugger::notice(print_r($_SESSION));
 			?>
 			</div>
 			<footer>
