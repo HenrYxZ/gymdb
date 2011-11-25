@@ -243,8 +243,8 @@
 						');
 					
 				// Bind the parameters
-				$stmt->bindParam(':rut_entrenador', $rutEntrenador, PDO::PARAM_STR);
-				$stmt->bindParam(':fecha_inicio', $fechaInicio, PDO::PARAM_STR);
+				$stmt->bindParam(':rut_entrenador', $this->rutEntrenador, PDO::PARAM_STR);
+				$stmt->bindParam(':fecha_inicio', $this->fechaInicio, PDO::PARAM_STR);
 						
 						
 				// Execute the prepared statement. Return TRUE on success or FALSE on failure

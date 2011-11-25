@@ -129,8 +129,20 @@ try{
 			}
 			
 		}
-		elseif ($action == 'deleteHorario')
+		else
 		{
+			Debugger::notice('No se cuenta con los campos requeridos.');
+			?>
+			
+			<h2>No es posible crear el nuevo horario</h2>
+			
+			<p>No se cuenta con todos los campos requeridos. Puede <a href="index.php?cat=horario&action=<?php echo $action; ?>">volver a intentarlo</a> desde el formulario.</p>
+			
+			<?php
+		}
+	}
+	elseif ($action == 'deleteHorario')
+	{
 			if( isset($_GET['trainerId']) && (strlen($_GET['trainerId']) > 0) &&
 				isset($_GET['fecha_inicio']) && (strlen($_GET['fecha_inicio']) > 0) )
 			{
@@ -150,18 +162,6 @@ try{
 				require('default.php');
 			}
 		}
-		else
-		{
-			Debugger::notice('No se cuenta con los campos requeridos.');
-			?>
-			
-			<h2>No es posible crear el nuevo horario</h2>
-			
-			<p>No se cuenta con todos los campos requeridos. Puede <a href="index.php?cat=horario&action=<?php echo $action; ?>">volver a intentarlo</a> desde el formulario.</p>
-			
-			<?php
-		}
-	}
 	elseif($action == 'setHorario')
 	{
 		if(isset($_GET['socioId']) && (strlen($_GET['socioId']) > 0))
