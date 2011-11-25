@@ -60,7 +60,7 @@ try{
 		{
 			$trainer = new Entrenador($trainerId);
 			
-			if( isset($_GET['fecha_inicio_original'] && (strlen($_GET['fecha_inicio_original']) > 0) )
+			if( isset($_GET['fecha_inicio_original'] && (strlen($_GET['fecha_inicio_original']) > 0) ))
 			{
 				$horario = new Horario($trainerId, $_GET['fecha_inicio_original']);
 				
