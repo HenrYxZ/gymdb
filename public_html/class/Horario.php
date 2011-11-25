@@ -160,7 +160,7 @@
 								WHERE rut_entrenador=:rut_entrenador 
 								AND fecha_inicio=:fecha_inicio_original
 								');
-							$stmt->bindParam(':rut_socio', $this->rutSocio, PDO::PARAM_STR);
+					
 						}
 						else
 						{
@@ -172,8 +172,6 @@
 								AND fecha_inicio=:fecha_inicio_original
 								');
 						}
-							
-						$stmt->bindParam(':tipo_actividad', $this->tipoActividad, PDO::PARAM_STR);
 					}
 					else
 					{
@@ -187,7 +185,6 @@
 								AND fecha_inicio=:fecha_inicio_original
 								');
 							
-							$stmt->bindParam(':rut_socio', $this->rutSocio, PDO::PARAM_STR);
 						}
 						else
 						{
@@ -203,6 +200,8 @@
 					$stmt->bindParam(':fecha_inicio', $this->fechaInicio, PDO::PARAM_STR);
 					$stmt->bindParam(':fecha_termino', $this->fechaTermino, PDO::PARAM_STR);
 					$stmt->bindParam(':rut_entrenador', $this->rutEntrenador, PDO::PARAM_STR);
+					$stmt->bindParam(':rut_socio', $this->rutSocio, PDO::PARAM_STR);
+					$stmt->bindParam(':tipo_actividad', $this->tipoActividad, PDO::PARAM_STR);
 					
 					$stmt->bindParam(':fecha_inicio_original', $this->fechaInicioPrev, PDO::PARAM_STR);
 					
