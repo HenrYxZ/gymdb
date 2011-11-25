@@ -407,16 +407,16 @@ try{
 			$stmt->bindParam(':peso_en_kg', $_GET['peso_en_kg'], PDO::PARAM_INT);
 			$stmt->bindParam(':estatura_en_cm', $_GET['estatura_en_cm'], PDO::PARAM_INT);
 			$stmt->bindParam(':porcentaje_grasa', $_GET['porcentaje_grasa'], PDO::PARAM_INT);
-			$stmt->bindParam(':rut_entrenador', $_GET['rut_entrenador'], PDO::PARAM_STR);
-			$stmt->bindParam(':rut_socio', $_GET['rut_socio'], PDO::PARAM_STR);
+			$stmt->bindParam(':rut_entrenador', $_GET['trainerId'], PDO::PARAM_STR);
+			$stmt->bindParam(':rut_socio', $_GET['socioId'], PDO::PARAM_STR);
 			
 			if($stmt->execute())
 			{
-				echo '<h2>Se ha agregado una nueva evaluaci&oacute;n/h2>';
+				echo '<h2>Se ha agregado una nueva evaluaci&oacute;n</h2>';
 			}
 			else
 			{
-				echo '<h2>Error al agregar una nueva evaluaci&oacute;n/h2>';
+				echo '<h2>Error al agregar una nueva evaluaci&oacute;n</h2>';
 			}
 			
 			
