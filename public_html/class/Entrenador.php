@@ -87,7 +87,7 @@
 		
 		public function insert()
 		{
-			if ( !in_array(null, $this->getNotNullClassVarsValues(), true) )
+			if ( true )
 			{
 				try{
 					// Intentar crear una variable dbh que contiene el objeto PDO inicializado
@@ -132,7 +132,7 @@
 		
 		public function update()
 		{
-			if ( !in_array(null, $this->getNotNullClassVarsValues(), true) )
+			if ( true )
 			{
 				try{
 					// Intentar crear una variable dbh que contiene el objeto PDO inicializado
