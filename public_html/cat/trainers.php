@@ -22,26 +22,42 @@ try{
 		require('trainers/index.php');
 		
 	}
-	elseif($action == 'showAgenda')
+	elseif($action == 'showAgenda' || $action == 'showAppointments')
 	{
 		if(isset($_GET['trainerId']) && (strlen($_GET['trainerId']) > 0))
 		{	
 			$trainerId = $_GET['trainerId'];
 		}
+		elseif( isset( $_SESSION['user'] ) )
+		{
+			if( get_class( $_SESSION['user'] ) === 'Entrenador' )
+				$trainerId = $_SESSION['user']->rut;
+		}
 		
 		if(isset($trainerId))
 		{
-			$q = 	'SELECT *
-					FROM Horario
-					WHERE rut_entrenador = \'' . $trainerId . '\'' .
-					'AND fecha_inicio >= CURRENT_TIMESTAMP
-					ORDER BY fecha_inicio ASC';
+			$trainer = new Entrenador($trainerId);
+		
+			if ( $action == 'showAgenda' )
+			{
+				$q = 	'SELECT *
+						FROM Horario
+						WHERE rut_entrenador = \'' . $trainerId . '\'' .
+						'AND fecha_inicio >= CURRENT_TIMESTAMP
+						ORDER BY fecha_inicio ASC';
+				require('trainers/showAgenda.php');
+			}
+			elseif ( $action == 'showAppointments' )
+			{
+				$q = 	'SELECT *
+						FROM Horario
+						WHERE rut_entrenador = \'' . $trainerId . '\'' .
+						'AND fecha_inicio >= CURRENT_TIMESTAMP
+						AND rut_socio IS NOT NULL
+						ORDER BY fecha_inicio ASC';
+				require('trainers/showAppointments.php');
+			}
 			
-			$q2 =	'SELECT *
-					FROM Entrenador
-					WHERE rut_entrenador = \'' . $trainerId . '\'';
-			
-			require('trainers/showAgenda.php');
 		}
 		else{
 			Debugger::notice('No se defini&oacute; una id de entrenador.');

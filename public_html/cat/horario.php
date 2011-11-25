@@ -28,12 +28,15 @@ try{
 		{	
 			$trainerId = $_GET['trainerId'];
 		}
+		elseif( isset( $_SESSION['user'] ) )
+		{
+			if( get_class( $_SESSION['user'] ) === 'Entrenador' )
+				$trainerId = $_SESSION['user']->rut;
+		}
 		
 		if(isset($trainerId))
 		{
-			$q =	'SELECT *
-					FROM Entrenador
-					WHERE rut_entrenador = \'' . $trainerId . '\'';
+			$trainer = new Entrenador($trainerId);
 			
 			require('horario/newHorario.php');
 		}

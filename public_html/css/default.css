@@ -83,6 +83,12 @@ header{
 	border:1px solid #777;
 }
 
+#content table .actions ul
+{
+	margin:0;
+	padding:0;
+	list-style-type:none;
+}
 
 #content input, #content label{
 	margin:3px 0;

@@ -1,6 +1,7 @@
 <?php
 // Cargar debugger
 require('class/Debugger.php');
+// Cargar generador de objetos PDO
 require('class/PDOFactory.php');
 
 // Cargar token
@@ -12,6 +13,9 @@ require('class/Administrador.php');
 require('class/Entrenador.php');
 require('class/Recepcionista.php');
 require('class/Socio.php');
+
+require('class/Horario.php');
+
 
 // Permitir guardar info en sesión
 // Debe estar después de la declaración de clases para permitir deserializar los objetos (si es que se guardara alguno en sesión)
@@ -128,6 +132,7 @@ if(isset($_GET["cat"]) && strlen($_GET["cat"]) > 0)
 							<a href="#">Trainer</a>  
 							<ul class="subnav">
 								<li><a href="index.php?cat=trainers&action=showAgenda">Ver agenda</a></li>
+								<li><a href="index.php?cat=trainers&action=showAppointments">Ver compromisos pr&oacute;ximos</a></li>
 								<li><a href="index.php?cat=horario&action=newHorario">Agregar horario disponible</a></li>
 								<li><a href="index.php?cat=horario&action=newHorario">Actualizar programa de un socio</a></li>
 								<li><a href="index.php?cat=socios&action=addprograma">Agregar programa de ejercicios para un socio</a></li>
