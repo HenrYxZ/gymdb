@@ -162,7 +162,7 @@
 							// Preparar el statement sql
 							$stmt =	$dbh->prepare('
 								UPDATE horario
-								SET fecha_inicio=:fecha_inicio, fecha_termino=:fecha_termino, rut_entrenador=:rut_entrenador, tipo_actividad=:tipo_actividad
+								SET fecha_inicio=:fecha_inicio, fecha_termino=:fecha_termino, rut_entrenador=:rut_entrenador, tipo_actividad=:tipo_actividad, rut_socio=DEFAULT
 								WHERE rut_entrenador=:rut_entrenador
 								AND fecha_inicio=:fecha_inicio
 								');
@@ -188,7 +188,7 @@
 						{
 							$stmt =	$dbh->prepare('
 								UPDATE horario
-								SET fecha_inicio=:fecha_inicio, fecha_termino=:fecha_termino, rut_entrenador=:rut_entrenador, tipo_actividad=DEFAULT
+								SET fecha_inicio=:fecha_inicio, fecha_termino=:fecha_termino, rut_entrenador=:rut_entrenador, tipo_actividad=DEFAULT, rut_socio=DEFAULT
 								WHERE rut_entrenador=:rut_entrenador
 								AND fecha_inicio=:fecha_inicio
 								');
