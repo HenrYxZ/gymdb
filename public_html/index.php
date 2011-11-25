@@ -106,15 +106,8 @@ if(isset($_GET["cat"]) && strlen($_GET["cat"]) > 0)
 				</ul>
 			</div>
 			<div id="content">
-			<div>
-			<?php
-				Debugger::notice(print_r($_SESSION));
-			?>
-			</div>
 			<?php
 				require('cat/' . $cat . '.php');
-			?><?php
-				Debugger::notice(print_r($_SESSION));
 			?>
 			</div>
 			<footer>
