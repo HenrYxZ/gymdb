@@ -336,6 +336,71 @@ try{
 		
 	}	
 	
+	
+	elseif($action === 'insertEvaluacion')
+	{
+		if(
+			isset($_GET['fecha_evaluacion']) && (strlen(trim($_GET['fecha_evaluacion'])) > 0 ) &&
+			isset($_GET['peso_en_kg']) && (strlen(trim($_GET['peso_en_kg'])) > 0 ) &&
+			isset($_GET['estatura_en_cm']) && (strlen(trim($_GET['estatura_en_cm'])) > 0 ) &&
+			isset($_GET['porcentaje_grasa']) && (strlen(trim($_GET['porcentaje_grasa'])) > 0 ) &&
+			isset($_GET['trainerId']) && (strlen(trim($_GET['trainerId'])) > 0 ) &&
+			isset($_GET['socioId']) && (strlen(trim($_GET['socioId'])) > 0 )
+			)
+		{
+			// Intentar crear una variable dbh que contiene el objeto PDO inicializado
+			try{
+				$dbh = &PDOFactory::getPDOObject();
+			}
+			catch(PDOException $e)
+			{
+				Debugger::notice($e->getMessage());
+				return false;
+			}
+			
+			// Preparar el statement sql
+			$stmt =	$dbh->prepare('
+							INSERT INTO ficha(fecha_evaluacion, peso_en_kg, estatura_en_cm, porcentaje_grasa, rut_entrenador, rut_socio)
+							VALUES (:fecha_evaluacion, :peso_en_kg, :estatura_en_cm, :porcentaje_grasa, :rut_entrenador, :rut_socio)
+							');
+			
+			$stmt->bindParam(':fecha_evaluacion', $_GET['fecha_evaluacion'], PDO::PARAM_STR);
+			$stmt->bindParam(':peso_en_kg', $_GET['peso_en_kg'], PDO::PARAM_INT);
+			$stmt->bindParam(':estatura_en_cm', $_GET['estatura_en_cm'], PDO::PARAM_INT);
+			$stmt->bindParam(':porcentaje_grasa', $_GET['porcentaje_grasa'], PDO::PARAM_INT);
+			$stmt->bindParam(':rut_entrenador', $_GET['rut_entrenador'], PDO::PARAM_STR);
+			$stmt->bindParam(':rut_socio', $_GET['rut_socio'], PDO::PARAM_STR);
+			
+			if($stmt->execute())
+			{
+				echo '<h2>Se ha agregado una nueva evaluaci&oacute;n/h2>'
+			}
+			else
+			{
+				echo '<h2>Error al agregar una nueva evaluaci&oacute;n/h2>'
+			}
+			
+			
+			
+		}
+		else
+		{
+			Debugger::notice('No se cuenta con los campos requeridos.');
+			?>
+			
+			<h2>No es posible insertar la evaluaci&oacute;n</h2>
+			
+			<p>No se cuenta con todos los campos requeridos. Puede <a href="index.php?cat=socios&action=addEvaluacion">volver a intentarlo</a>.</p>
+			
+			<?php
+		}
+		
+		
+			
+			
+	}
+	
+	
 	else{
 		Debugger::notice('Acci&oacute;n "' . $action . '" no reconocida.');
 		
