@@ -78,7 +78,7 @@
 		
 		public function insert()
 		{
-			if ( !in_array(null, $this->getNotNullClassVarsValues(), true) )
+			if ( true )
 			{
 				try{
 					// Intentar crear una variable dbh que contiene el objeto PDO inicializado
@@ -237,13 +237,6 @@
 					$result[$name] = $value;
 				}
 			}
-			echo 'variables de clase: ';
-			print_r(get_class_vars(__CLASS__));
-			echo 'self::notNullProperties';
-			print_r(self::notNullProperties);
-			echo 'result: ';
-			print_r($result);
-			
 			
 			return $result;
 		}
