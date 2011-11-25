@@ -412,11 +412,11 @@ try{
 			
 			if($stmt->execute())
 			{
-				echo '<h2>Se ha agregado una nueva evaluaci&oacute;n</h2>';
+				echo '<h2>Se ha agregado una nueva evaluaci&oacute;n</h2><p><a href="index.php?cat=socios&action=listevaluaciones&socioId='.$_GET['socioId'].'">Ver las evaluaciones para el socio</a></p>';
 			}
 			else
 			{
-				echo '<h2>Error al agregar una nueva evaluaci&oacute;n</h2>';
+				echo '<h2>Error al agregar una nueva evaluaci&oacute;n</h2><p><a href="index.php?cat=socios&action=addEvaluacion&socioId='.$_GET['socioId'].'">Volver a intentarlo</a></p>';
 			}
 			
 			
