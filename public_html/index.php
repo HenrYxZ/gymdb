@@ -122,7 +122,7 @@ if(isset($_GET["cat"]) && strlen($_GET["cat"]) > 0)
 							
 						</li>
 						<li>
-						<a hres="#">Trainers</a>
+						<a href="#">Trainers</a>
 						<ul class="subnav">
 								<li><a href="index.php?cat=trainers&action=showTrainers">Ver todos los trainers</a></li>
 								<li><a href="index.php?cat=trainers&action=addTrainers">Registrar nuevo trainer</a></li>
@@ -131,7 +131,7 @@ if(isset($_GET["cat"]) && strlen($_GET["cat"]) > 0)
 						</ul>
 						</li>
 												<li>
-						<a hres="#">Socios</a>
+						<a href="#">Socios</a>
 						<ul class="subnav">
 								<li><a href="index.php?cat=socios&action=listsocios">Ver todos los socios</a></li>
 								<li><a href="index.php?cat=socios&action=addsocio">Registrar nuevo socio</a></li>
