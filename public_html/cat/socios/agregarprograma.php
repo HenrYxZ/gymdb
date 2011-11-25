@@ -1,9 +1,5 @@
 <?php
-require('../../class/Debugger.php');
-try
-{
-    require('../_connect.php');
-    
+   
     $rut=$_POST['rut'];
     $nombre_ejercicio=$_POST['nombre_ejercicio'];
     $series=$_POST['series'];
@@ -21,7 +17,11 @@ try
 	$qrut="SELECT * from $tabla where rut_$tabla = '$rut'";
 	Debugger::notice($qrut);
 	
-if($dbh->query($qrut))	
+	$stmt=$dbh->query($qrut);
+$contador=$stmt->RowCount();
+Debugger::notice($contador);
+
+if($contador>0)
 	$repetido=true;
 else
 	$repetido=false;
@@ -42,15 +42,5 @@ else
     
     ?> 
 
-    <p><a href="../../index.php?cat=socios&action=addsocio"> Volver a agregar otro programa de ejercicio</a></p>
+    <p><a href="../../index.php?cat=socios&action=addprograma"> Volver a agregar otro programa de ejercicio</a></p>
     <p><a href="../../index.php"> Volver a la p&aacute;gina principal</a></p>
-
-    <?php
-    
-}
-
-catch(PDOException $e){
-	print($e->getMessage());
-	
-}
-?>

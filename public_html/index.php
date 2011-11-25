@@ -86,6 +86,7 @@ if(isset($_GET["cat"]) && strlen($_GET["cat"]) > 0)
 							<li><a href="index.php?cat=admin&action=verEquipamiento">Administrar equipamiento</a></li>
 							<li><a href="index.php?cat=socios&action=listsocios">Ver todos los socios</a></li>
 							<li><a href="index.php?cat=socios&action=addsocio">Registrar nuevo socio</a></li>
+							<li><a href="index.php?cat=socios&action=removesocio">Eliminar un socio</a></li>
 							<li><a href="index.php?cat=admin&action=asistencia">Estad&iacute;sticas de socios</a></li>
 							<li><a href="#">Renovar matr&iacute;cula de un socio</a></li>
 							<li><a href="#">Pagar mensualidad de un socio</a></li>

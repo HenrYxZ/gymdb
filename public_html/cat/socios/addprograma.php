@@ -40,6 +40,13 @@ function validar(){
 		return 0;
 	}
 	
+	if(!validarEntero(document.input.carga.value) && document.input.carga.value.length!=0)
+	{
+		alert("Carga debe ser un numero entero")
+		document.input.carga.focus()
+		return 0;
+	}
+	
 	
 
    	//el formulario se envia 
@@ -70,7 +77,7 @@ function validarEntero(valor){
 
 
 <h1> Agregar un nuevo programa de ejercicios</h1>
-<form name="input" action="cat/socios/agregarprograma.php" method="post">
+<form name="input" action="index.php?cat=socios&action=agregarprograma" method="post">
     <table border="0">
         <tr>
            <td>Rut: </td>

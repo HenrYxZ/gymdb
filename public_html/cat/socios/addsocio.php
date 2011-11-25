@@ -151,7 +151,7 @@ $.datepicker.setDefaults( $.datepicker.regional[ "" ] );
 </script>
 
 <h1> Agregar un nuevo Socio</h1>
-<form name="input" action="cat/socios/agregarsocio.php" method="post">
+<form name="input" action="index.php?cat=socios&action=quitarsocio" method="post">
 <table border="0">
 <tr>
 	<td>Rut: </td>
