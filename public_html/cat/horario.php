@@ -154,7 +154,7 @@ try{
 				else
 					Debugger::notice('No se ha podido eliminar el horario');
 				
-				header( 'Location: index.php' ) ;
+				header( 'Location: index.php?cat=trainers&action=showAgenda&trainerId='.$_GET['trainerId'] ) ;
 			}
 			else
 			{
