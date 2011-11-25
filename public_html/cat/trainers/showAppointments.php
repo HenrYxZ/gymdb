@@ -1,5 +1,5 @@
-<h2>Agenda para <?php echo $trainer->apellidoPaterno . ' ' . $trainer->apellidoMaterno . ', ' .$trainer->nombre; ?></h2>
-<p>A continuaci&oacute;n se muestran tanto las horas disponibles como los eventos asignados para el entrenador (aquellos que tienen un rut de socio asignado). Se muestran solamente los definidos a partir de hoy en adelante.</p>
+<h2>Compromisos pr&oacute;ximos para <?php echo $trainer->apellidoPaterno . ' ' . $trainer->apellidoMaterno . ', ' .$trainer->nombre; ?></h2>
+<p>A continuaci&oacute;n se muestran s&oacute;lo los eventos asignados para el entrenador (aquellos que tienen un rut de socio asignado). Se muestran solamente los definidos a partir de hoy en adelante.</p>
 <table>
 	<tr>
 		<th>Fecha inicio</th>

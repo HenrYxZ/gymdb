@@ -1,7 +1,4 @@
-<?php
-$row = $dbh->query($q)->fetch(PDO::FETCH_ASSOC);
-?>
-<h2>Nuevo horario para <?php echo $row['apellido_paterno'] . ' ' . $row['apellido_materno'] . ', ' .$row['nombre']; ?></h2>
+<h2>Nuevo horario para <?php echo $trainer->apellidoPaterno . ' ' . $trainer->apellidoMaterno . ', ' .$trainer->nombre; ?></h2>
 
 		<form action="index.php" method="get">
 			<!-- Seleccionar una fecha -->
