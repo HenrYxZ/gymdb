@@ -3,7 +3,7 @@
 
 <h1>Listado de socios</h1>
 
-<p>Estos son todos los socios:<p>
+<p>Estos son todos los socios con matricula vigente:<p>
 
 <table border='1' cellpadding='15'>
 	<tr>

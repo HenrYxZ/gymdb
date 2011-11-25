@@ -87,11 +87,11 @@ try{
 			
 		}
 		
-		$q='SELECT * FROM socio';
+		$q='SELECT * FROM socio NATURAL JOIN matriculas WHERE fecha_inicio <now()::date AND fecha_termino >now()::date';
 		$strFiltros ='';
 		if(isset($filtros)){ 
 		
-		$strFiltros = ' WHERE ';
+
 		//concatena una sentencia AND por cada filtro guardado en la variable filtros
 		$i=0;
 		while($i<count($filtros)){

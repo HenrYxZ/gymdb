@@ -108,7 +108,7 @@ if(isset($_GET["cat"]) && strlen($_GET["cat"]) > 0)
 						elseif( get_class( $_SESSION['user'] ) === 'Administrador' )
 						{?>
 						<li>  
-							<a href="#">Administrador</a>  
+							<a href="#">Administracion</a>  
 							<ul class="subnav">  
 								<li><a href="index.php?cat=admin&action=verEquipamiento">Administrar equipamiento</a></li>
 								<li><a href="index.php?cat=admin&action=asistencia">Estad&iacute;sticas de socios</a></li>
