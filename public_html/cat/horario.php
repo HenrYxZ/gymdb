@@ -129,6 +129,21 @@ try{
 			}
 			
 		}
+		elseif ($action == 'deleteHorario')
+		{
+			if( isset($_GET['trainerId']) && (strlen($_GET['trainerId']) > 0) &&
+				isset($_GET['fecha_inicio']) && (strlen($_GET['fecha_inicio']) > 0) )
+			{
+				$horario = new Horario($_GET['trainerId'], $_GET['fecha_inicio']);
+				$horario->delete();
+				$horario = null;
+			}
+			else
+			{
+				Debugger::notice('No se cuenta con los campos requeridos.');
+				require('default.php');
+			}
+		}
 		else
 		{
 			Debugger::notice('No se cuenta con los campos requeridos.');
