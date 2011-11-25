@@ -154,7 +154,7 @@ try{
 				else
 					Debugger::notice('No se ha podido eliminar el horario');
 				
-				require('trainer/showAgenda.php');
+				require('trainers/showAgenda.php');
 			}
 			else
 			{
